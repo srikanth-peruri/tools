@@ -58,12 +58,18 @@ git status
 
 git log 
 	logs the recent actions in to the console
+
+git log --abbrev-commit
+	logs the recent actions in to the console by shortening the md5s
 	
 git add
 	Adds the files modified to the staging area	
 
 git add .
 	Adds all the files recursively in all the sub folders modified/added to the staging area	
+
+git add -A
+	adds every action like add, delete
 	
 git commit -m "message"
 	commits the changes to the local repo with the mesage we passed
@@ -83,10 +89,17 @@ git pull origin <branch>
 git ls-files
 	Lists all the files which git is tracking
 	
+git mv
+	moves the file to a new file
 
+git rm <filename>
+	deletes the tracked file
+	
 
-	
-	
+git config --global alias.<custom command> "<command>"
+	sets the frequently used commands to an alias.
+
+ 	
 	
 	
 	

@@ -46,4 +46,61 @@ There is a 4th state as well
 	
 Master Branch is the main branch in git and we branch the Master to perform changes on the branch for different versions and then finally merge into master
 	
+
+git init
+	Add an existing project to the git repo
+
+git clone <github repo url>
+	Clones the remote repo to the local	
+
+git status
+	shows the changes that happened to the files wrt to the HEAD version
+
+git log 
+	logs the recent actions in to the console
+	
+git add
+	Adds the files modified to the staging area	
+
+git add .
+	Adds all the files recursively in all the sub folders modified/added to the staging area	
+	
+git commit -m "message"
+	commits the changes to the local repo with the mesage we passed
+	
+git push origin <branch>
+	pushes the changes to the remote repo like github to the specified branch
+	
+git reset HEAD <filename> 
+	resets the staged file and move it to the working directory
+
+git checkout -- <filename>	
+	removes the modifications to the file in the working directory and makes it equal to the HEAD revision
+
+git pull origin <branch>
+	pulls the changes from remote repo
+	 
+git ls-files
+	Lists all the files which git is tracking
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	

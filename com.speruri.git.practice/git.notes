@@ -1,0 +1,49 @@
+Git is a version control system 
+Git is a Distributed version control system
+It can be decentralised a swell
+It massively scales
+Git operation are local and very fast
+It can be committed to remote GIT repo as well
+
+Why GIT
+	It maintains the versioning/history
+	It backups the changes
+	We can undo changes
+	We can compare the changes
+	Collabration
+	Isolation of changes
+	Experimenting the new changes
+	Code review
+	Context Switching
+
+Who needs GIT
+	Any file can be version controlled. Including the Binary version file.
+	So anyone who is working on the files can use GIT
+	Like
+		Software developers
+		Text file
+		Web designers
+		Graphic artists
+		Anyone who like to share the code
+		
+Choices of GIT versions
+	There are 2 choices 
+		1. Centralized
+			Subversion. CVS are examples
+			Requires connection to the central server for most of the operations
+		2. Decentralised/Distributed
+			Most operations are performed locally
+			Can be disconnected with source server and can work local
+			Tools like GIT, Mercurial(Hg) 	
+
+There are 3 types of states in local
+	1. Working directory
+	2. Staging Area or Git index
+	3. Commit Repository
+	
+There is a 4th state as well 	
+	Remote Repository
+	
+Master Branch is the main branch in git and we branch the Master to perform changes on the branch for different versions and then finally merge into master
+	
+	

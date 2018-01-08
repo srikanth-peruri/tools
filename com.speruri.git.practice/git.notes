@@ -136,6 +136,9 @@ git rebase
 	In such case, at one point you have to merge the changes to master at some point. So avoid huge conflicts
 	we can rebase the feature branch to master so that we are with all the latest changes with the master branch
 		
+	After rebase, the current head in the feature branch will be played back and then the master changes were merged into the feature branch
+	and then commits the latest changes to the feature branch
+		
 	
 	
 	

@@ -100,7 +100,33 @@ git config --global alias.<custom command> "<command>"
 	sets the frequently used commands to an alias.
 
  	
+git diff
+	Compare the state of the working directory to the repository HEAD
 	
+git diff --staged HEAD
+	compares the state of the staged file to the last commit in the current branch i.e, HEAD
+	
+	We can also compare two commits using the md5sums
+	
+HEAD - points to the last commit of that branch
+HEAD^ - points to the commit prior to the last commit in that branch
+		
+git branch -a
+	Lists all the branches in the repo
+	
+git branch <newbranchname>
+	Creates a new branch and then switches to that branch
+	
+git branch -m <oldbranchname> <newbranchname>
+	Renames the existing branch to the mentioned branch name
+
+git branch -d <branchname>
+	Removes the branch in the list. It wont work if you are trying to remove the branch you are currenlty on.
+	
+git checkout -b <newbranchname>
+	We can create a new branch and then switch to it instead of two steps.
+	
+ 	
 	
 	
 	

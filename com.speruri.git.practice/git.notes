@@ -130,7 +130,12 @@ If the new branch is added in remote repo and there is no upstream for that bran
 git push --set-upstream origin <branchname> 	
 
 	
-	
+git rebase
+	For example, you have created a new feature branch and then you have a master branch
+	And there are continuos developments in both the master and the feature branch.
+	In such case, at one point you have to merge the changes to master at some point. So avoid huge conflicts
+	we can rebase the feature branch to master so that we are with all the latest changes with the master branch
+		
 	
 	
 	

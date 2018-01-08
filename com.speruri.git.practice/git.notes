@@ -126,7 +126,9 @@ git branch -d <branchname>
 git checkout -b <newbranchname>
 	We can create a new branch and then switch to it instead of two steps.
 	
- 	
+If the new branch is added in remote repo and there is no upstream for that branch, then you can fire a request to do so
+git push --set-upstream origin <branchname> 	
+
 	
 	
 	

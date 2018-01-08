@@ -141,7 +141,9 @@ git rebase
 		
 	
 	
-	
+git stash
+	saves the current state of the working directory
+		
 	
 	
 	

@@ -1,0 +1,267 @@
+What is a Thread
+	A Thread is a set of intructions that perform soem tasks
+	A thread is defined at the operating system level
+	An Application can be composed of several threads
+	Different threads can be executed at the same time
+	Even JVM uses several threads for Garbage collections, ..etc
+	OS Thread scheduler allocates time to these threads to perform the tasks
+		Thread scheudlar allocates the CPU time as per the priorities of the thread
+		There might be many threads running in the system and they all need CPU time to process their tasks. So thread schedular takes care of that
+		There are 3 reasons for the schedular to pause the thread
+			1. The CPU should be shared equally among all the threads
+			2. The Thread is waiting for more data
+			3. The Thread is waiting for another Thread for some resource
+	
+Race Condition
+	Assume that two threads are reading and writing to the same variable at the same time may lead to the Race Condition.
+	This may lead to the issues with the state of the variable read
+
+Synchronization
+	Prevents a block of code to be executed by more than one thread at a given point of time
+	Every object in the java is having a lock object that has a key under the hood
+	Whenever a thread wants to execute a block of synchronized code , then it asks for the key. If the key is not held by any other thread, then
+		the lock object allocates this key to this thread or else, this thread has to wait until it gets the key
+	For synchronization to work, we need a special, technical object that holds the key. Infact every object in java can act as this special object that
+		holds the key
+	This key is called as Monitor
+		So the monitor is an object that holds the key and every object in java can act as a monitor
+			 
+How to choose the object to act as a key
+	There are 3 kinds of keys we can declare
+		1. If a static method is declared with synchronized, then the class itself acts as a synchronized key.
+		2. IF an instance method is declared as synchronized, then the instance of that class acts as a synchronized key
+		3. We can have a dedicated synchronized object in a class which is declared as an instance variable. And this could be any object in java since any object in java can act as key.
+			But it may not be an object of a type. It could be an instance of "Object" class.
+			we can use synchronized keyword by passing this key object like synchronized(object)
+
+	Assume that an class is having a synchronized instance method. Then the key would be the instance of that class. 
+	Assume that there are 2 synchronized instance (non-static) methods one is getName(), getAge()
+	Assume a thread A started calling getName(), then the instance key(monitor) is acquired by that thread and starts executing the method getName()
+	Assume that another thread B started calling getAge(), since the monitor(key) is of instance level and currently there is only one key which is acquired by thread A,
+	the thread B has to wait until the thread A releases the lock.
+	So to have multiple methods with synchronized keyword, then its always better to have multiple keys in class declared and then use them
+	To stop all the synchronized methods to get executed when one thread is executing a synchronized method, then we can have a static field in the class as a key that halts every other synchronized method
+	to get executed by other threads. So only one synchronized method will get exectued at that point of time
+	
+Reentrant Locks
+	When a thread holds a lock, it can enter a block synchronized on the lock it is holding
+	
+Deadlock
+	When a thread T1 holds the key needed by Thread T2 and the THread T2 holds the key needed by T1. 	
+	JVM has ability to detect and log the information of this deadlock for debugging the applciation
+	But there is nothing we can do. All we can do is to restart the JVM
+	
+	
+Thread Join
+	When we call thread.join() then the parent thread will wait for this thread to complete
+
+Runnable Pattern
+	Its for launching threads
+
+Runnable Interface
+	A functional interface which has only one method run()
+	We can use functional programming to define this run method
+	It doesn't return anything
+	A thread executes a task
+
+How to stop a thread
+	stop() method in the Thread cannot be used at all. This is very old method
+	use interrupt() instead of stop()
+		It is a signal to stop the current running task
+		
+Producer/Consumer problem
+	Producer is the one which produces the values into a buffer
+	Consumer is the one consumes the value in the buffer
+	There could be many producers and consumers working on the same buffer
+		If the buffer is empty, the consumer shouldnot consume the values
+		If the buffer is full, then the producer should not add values to the buffer
+	Producers and consumers run in their own thread
+
+Race Condition
+	When several threads read and write to the same buffer at the same time, then it is called Race Condition
+
+Wait/notify
+	wait() and notify() are the ,ethods in the Object class and are available to all the instances in JAVA
+	wait() 
+		The THread calling this wait should hold the key. Hence, it should be in the synchronized block
+		Calling wait on the object releases the key on this object and becomes available to other threads
+		It puts the thread in WAIT state
+		makes the thread to wait until someone calls notify()
+		calling notify releases the WAITING thread in to RUNNABLE state
+
+notifyAll()
+	wakes up all the threads that 
+		
+	
+	
+States of the Thread
+	NEW
+		When a new thread is created. Thread t = new Thread()l
+	RUNNABLE
+		When we call start() then this thread is set to runnable state. Then the thread scheduler can give soem time slice to this thread to perform its task
+		There are some more states when the thread is running
+			BLOCKED
+				When the thread is blocked to acquire a lock
+			WAIT
+				When the thread is in waiting state when we call wait(). We should call notify() call to make it start again.
+			WAIT(milliseconds)
+				timed wait.	No need of calling notify for this. It will start again after timeout
+	TERMINATED
+		When thread finishes its task, then it will get terminated.
+		
+		Thread.getState() will gives the state of the thread
+		
+		
+We saw what the synchronization is, we will now see what is Visibility
+	
+	synchronization
+		It protects the block of code from multiple concurrent threads
+		Guarantees the block of the code to be executed by one thread at a time
+		Prevents race condition
+	
+	
+	In the modern CPU's, There are multiple cores (each core is a sub-CPU) and each has 2 types of cache
+		L1 cache 
+		L2 Cache
+		
+		L3 cache is shared by all the cores of the CPU
+	
+	The Access to the memory is faster when compared to L1/L2 caches than RAM Memory
+	Reading/writing to/from l1/l2 cache is much faster than reading from the main memory
+		If access to main memory takes 100ns
+		Then access to the l2 cache memory takes 7ns
+			 access to the l1 cache memory takes 0.5ns
+	
+	Size of these caches are much less than the main memory
+
+Visible Variable
+	A variable is visible when if the writes made on it is visible across the cores of the CPU
+	Fortunately all the writes of the variables in the synchronized block are visible across the CPU cores
+
+Happens Before Notion
+	When there are two operations involving some variables, then the values of them will be decided with the Happens Before link
+	Java Memory model helps in doing this
+	
+	A Happens Before Link exists between all the 
+		synchronized or volatile write operations and all
+		synchronized or volatile read operations that follows
+		
+synchronization
+	Guarantees the exclusive execution of the block of code by one thread
+Visibility
+	Guarantees the consistency of the variables
+
+So all the shared values should be accessed in a synchronized way or a in volatile way. If not we will have race condition
+Volatile internally maintains HAppens Before link
+
+False Sharing
+	The way the caches are structured in the CPU is having drawbacks and is leading to false sharing
+	False sharing happens with the structure of the caches in CPU
+	This will have a tremendous performance impact on the application
+	Because
+		The cache in the CPU are arranged in lines of Data
+		Each line can hold  8longs(64 bytes) of data
+		When a visible variable is modified in l1 cache, then the whole line is marked as dirty and broadcasted to other caches.
+		A read on a dirty line triggers a refresh on this line
+		
+	Here is what happens
+		Assume that 2 threads are updating two different variables a,b of a class.
+		Assume the following
+		Thread1 loads into L1 of Core1 
+			a, b will be loaded into the l1 cache line
+		Thread2 loads into L1 of Core2 
+			a, b will be loaded into the l1 cache line
+			
+		When thread1 updates the a value with a++, then the l1 cache line is marked as dirty and broadcasted to all the cores
+		When Thread2 tries to update b with b++, then it see that the line is dirty and triggers the refresh of the cache. 
+			This is called Cache miss
+			This makes the reading of variable a again from main memory
+			This way, the reads from main memory grows and impacts performance alot. 
+			This procedure of broadcasting the change is called false sharing.
+			and it happens in invisible way since we don't know how the class is mapped in memory
+			
+	
+Double Checkig locking
+	use volatile 
+	
+	
+Always use private variable for a lock object
+Donot expose this object to the outside world
+
+How to write correct concurrent code
+	1. Check for the Race Conditions
+		This occurs to the field of the object obly (not local variables / parameters)
+		When 2 threads are reading/writing the same instance field, then we will get Race conditions
+	
+	2. Check for the "Happens Before link"
+		Are read/write operations are volitile?
+		Are they synchronized?
+		If they are outside of the synchronized block, then they have the issue
+		If not, there is a bug (might be double checking locking bug)
+		This could be very subtle (very hard to find the issue)
+	
+	3. Whether to use synchronized or volatility?
+		synchronized = atomicity
+		volatile = visibility
+							
+	
+	
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

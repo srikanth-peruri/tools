@@ -143,11 +143,67 @@ git rebase
 	
 git stash
 	saves the current state of the working directory
-		
+
+git stash apply
+	will apply the lash stashed changes to the current working directory
 	
+git stash drop
+	drops the last stash		
+
+git stash list
+	lists all the stashes
 	
+git status -u
+	stashes the untracked files as well
 	
+git stash pop
+	applys the last stash and drops the last stash with single command
 	
+git stash save "<title for stash>"
+	stashes the changes by giving it a name
+	
+git stash show <@stash{x}>	
+	displays the stash with number x
+	
+git stash apply <@stash{x}>	
+	applies the stash at x to the working directory
+	
+git stash drop <@stash{x}>	
+	Drops the stash x 
+
+git stash clear
+	clears all the stashes
+
+git stash branch <branchname>
+	creates a new branch with name <branchname> and applies the stash on that branch and then finally drops the stash
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	

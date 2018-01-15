@@ -179,7 +179,19 @@ git stash branch <branchname>
 	
 
 
-
+Git Model
+	Here are the layers of GIT
+		Just a persistent Map
+			Key is the SHA1 of the file
+				SHA1 is 20bytes hexa decimal format
+				git hash-object <file> will give the hash and which is treated as the key of the object
+				Every object in the GIT is having the sha1
+				git cat-file <sha1> -p gives the content of the file
+			Value is nothing but the sequence of bytes
+		Content Tracker
+		Repository which takes care of branches, merges
+		Distributed Version control
+	
 
 
 

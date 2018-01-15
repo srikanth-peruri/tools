@@ -1,0 +1,31 @@
+Advance JAVA
+	You need to learn the basic java concurrency to understand the advance concurrency
+	
+	
+1. Introduction to Executor Pattern, Futures and Callable 	
+Usually we use Runnable pattern to create a thread.
+Thread performs some task
+	Never create a thread on ur own.
+	Creating a thread is an expensive on
+	So creating and terminating the threads are cumbersome and you should not do it especially in JAVA EE applications
+
+How can we improve the performance of thread creation
+	Instead for creating a threads with a task as a parameter on our own, we create pools of ready to use threads and then use from the pool.
+	We pass a task to a pool of threads and that will execute it.
+	
+	We need two patterns
+		The first one is to create a pool of threads
+		pass the tasks (Runnables) to this pool to get executed
+
+In java, pool of threads is an instance of Executor Interface
+	Executor have only one method 	
+
+We have another interface that extends the Executor
+	ExecutorService extends Executor
+		This has about 11 more methods. but we don't use everything
+
+To create a thread pool we use the Executors factory class to create the pool.
+	Executors.
+	
+		
+	

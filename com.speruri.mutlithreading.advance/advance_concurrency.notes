@@ -25,7 +25,158 @@ We have another interface that extends the Executor
 		This has about 11 more methods. but we don't use everything
 
 To create a thread pool we use the Executors factory class to create the pool.
-	Executors.
+	ExecutorService executorService = Executors.newSingleThreadExecutor();
+	This create a pool with single thread.
+	The thread will be in alive until the pool is alive
+	calling executorService.shutdown() will terminate all the threads and pool as well.
+	
+There are 2 Executor Services can be used frequently.
+	ExecutorService executorService = Executors.newSingleThreadExecutor();
+		Creates a thread pool with one thread in it
+	ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(n);
+		Creates a thread pool with 'n' no of threads.
+	
+	We then create the a runnable task and then pass it to the executor service
+		Runnable task = () -> {System.out.println("Hi")};
+		executorService.execute(task);
+			this will start executing the task.
+			
+Suppose we created a executorService using single thread
+	ExecutorService executorService = Executors.newSingleThreadExecutor();	
+	And when we submit two tasks to this executorService with one thread, like
+		executorService.execute(task1);
+		executorService.execute(task2);
+	Then the tasks would run in sequence. Since its a single thread executorService, the task2 should wait until the task1 is completed. 
+	executorService internally contains a waiting queue in which the tasks will be held if there is no threads available. 
+	The tasks are executed in order.
+
+Questions
+	Can we know from executorService whether the tasks are completed or not. 
+		No, we have no methods to check that
+	Can we cancel the execution at any time?
+		No, if the execution started, yes if not started
+
+ExecutorService wrapup			
+	Its very efficient to create executorService instead of we creating the threads on demand. 
+	It internally have waiting queue into which the tasks can wait until there is a thread available to perform its task
+	The thread can execute any runnable passed.
+	A task can be removed from the executorService if its not started yet.	
+	
+Limitations of Runnable.
+	No exceptions raised. No lower level exceptions are transmitted ot the upper level
+	No data is returned
+	There is no way to know whether the task is done or not.
+	This runnable task cannot produce a result.
+	
+	So, 
+		how can a task return the value
+		We need a new model to return a value and also transfer the exception to the upper layer
+		Also, it should throw exceptions
+		We also need an object that acts as a bridge between the threads
+		Here is the new interface CALLABLE
+		
+CALLABLE
+	its a functional interface
+	It returns value as well as exceptions
+	Here is that method
+	
+	@FunctionalInterface
+	public interface Callable<v>{
+		v call() throws Exception	
+	}
+
+	Executor doesn't handle this Callables since it only handles the Runnables.
+	ExecutorService has a method submit(callables) which execute the callables and returns the Future
+		
+	Future<V> executorService.submit(callable<V> task);	
+
+	When we submit the task to the executorService from main thread, then the executorService allocates a thread to this task
+	When the executorService had some response for that task, then it returns the results with a FUTURE object to the main thread.
+	Calling the future.get() returns the desired object
+	Note that the get method is blocking method untill we get the result back from the executorService.
+	
+	Future.get might throw 2 exceptions
+		1. Interrupted exceptions
+			When u call the executorService shutdown.
+		2. ExecutionException 
+			when running the task
+
+	If the task is completed and the result is available, the it immediately returns the results
+	If not completed, then it blocks until the task is completed and then returns the result.
+	We can also pass the timeout to avoid the blocking infinitely 
+
+
+We have many executorService implementations in Java. But we use mostly 3
+	1. ExecutorService executorService = Executors.newSingleThreadExecutor();
+	2. ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(8);
+	3. ExecutorService executorService = Executors.newCachedThreadPool();	
+	4. ScheduledExecutorService newScheduledThreadPool = Executors.newScheduledThreadPool(8);
+	
+	ExecutorService executorService = Executors.newCachedThreadPool();
+		This is a lazy one and creates te threads on demand.
+		Keeps the threads in pool for 60 secs and then terminates them
+		
+	ScheduledExecutorService newScheduledThreadPool = Executors.newScheduledThreadPool(8);
+		Creates a schedules executor service with a pool
+		we schedule a task in the future
+		we can execute the tasks with fixed delay till some period of time	
+		
+There are 3 ways to shutdown the executorService 
+	1. executorService.shutdown()
+		waits for the submitted tasks to be completed 
+		executes waiting tasks
+		donot accepts the new tasks
+		then shutdown
+		
+	2. executorService.shutdownnow()
+		halts every running tasks and waiting tasks and then shutsdown
+		it throws the ExecutionExceptions and then quits
+		not accepts the new tasks
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 		
 	

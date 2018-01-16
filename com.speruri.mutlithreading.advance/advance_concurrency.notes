@@ -133,9 +133,58 @@ There are 3 ways to shutdown the executorService
 		it throws the ExecutionExceptions and then quits
 		not accepts the new tasks
 		
+	3. awaitTermination(millis)
+		terminates the running tasks after the timeout
+	
+2. Using locks , semaphores for Producer/Consumer pattern
 
+Intrinsic Locking
+	It is nothing but the synchronization where we will have a Object as a lock in the class like.
+	private final Object key = new Object();
+		Only one thread will be allowed to get the key and then execute the synchronization block of code
+		When the thread inside the synchronization block is blocked, then all the other threads waiting to get the access will also be blocked
+		There is no way in jave to unblock it and we should restart the JVM
+		
+	Instead of writing such above code, we can use another process of LOCK pattern
+LOCK
+	Lock is the java object which acts same as the synchronization block.
+		It provides the same exclusion, read and write ordering
+		Happens before link.etc
+	
+	Lock is an interface and ReentrantLock is the implementation
+		
+		Lock lock = new ReentrantLock();
+		try{
+			lock.lock().
+			//Do something here
+		}catch(Exception e){
+			//catch exception
+		} finally {
+			lock.unlock();
+		}
+		
+	Lock is having more features 
+		Instead of passing instance of an object as lock 
+		To guard several blocks of code
+		We create a lock object
+		we have several methods in the Lock object
 
-
+Interruptible Lock Acquisition
+	using lock.lockinterruptible
+		This is interuptible pattern
+		The thread will wait until it can enter the guarded block of code
+		Another thread can call interupt on it so that the running thread can interrupt
+		This not possible with synchronization pattern
+		
+Timed lock acquisition
+	This is a timed lock acquisition
+	When a thread is running the code inside the block, then calling the tryLock will return false 
+	It also takes timeout parameter 
+	
+		lock.tryLock()
+				
+		 
+	
 
 
 

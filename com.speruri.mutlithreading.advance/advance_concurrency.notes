@@ -290,13 +290,65 @@ Latches
 	
 		 
 	
+4. Understanding CASing and Atomic Variables
 
-
-
-
-
-
-
+CASing
+	CASing is Compare and swap
+	Its an OS related topic
+	Its a set of Assembly instructions and low level functionalities
+	CASing works with 3 parameters
+		1. location in the memory
+		2. Existing value at that location
+		3. New value to be written at that location
+		
+	If the current value at that address is the value we expect, then we just update the value and return true. Or else return false since there is some update happened at that location.
+	All this happens in a single atomic assembly instruction
+	
+	AtomicLong is one of the example.
+		AtomicLong is a wrapper on top of the Long and used to incrementing the counters
+		It helps to increment the counter without the use of synchronization in case of multiple threads accessing it for read/write.
+		It uses CASing technique to do that
+		When java tries to increment the counter, then CASing tells the calling code that increment fialed if another thread had changed the value in the meantime.
+		if the increment is not success, then the API tries until it gets incremented.
+		 
+	AtomicBoolean
+		It has the following methods
+			get(),set()
+			getAndSet()
+			compareAndSet(expected, value)
+	
+	AtomicInteger
+		get(),set()
+		getAndSet()
+		compareAndSet(expected, value)
+		getAndUpdate(uniaryOperator)						
+		updateAndGet(uniaryOperator)
+			uniary operator is just the operation on the existing value
+	
+	AtomicReference<V>
+		This is a Wrapper on the object reference
+				
+	
+	Casing works well when concurrency is not too high
+	If Concurrency is too high, then the update operation on memory by many threads will lead to retries and might overload the CPU/memory
+	Since only one thread wins and all the other threads are trying and trying to win.
+	
+	In case of synchronization, only one thread enters the block of synchronization code and other threads wait. 
+	But where as in case CASing, every thread tries to access the code but only one wins. the other failing thread will continously tries to update the variable.
+	 
+	So, Atomic Variables are the tools to handle Concurrent read/writes using CASing technique
+	It is different from synchronization 
+	It should be used with are. And not to be used with high concurrent threads
+	
+Adders and Accumulators
+	These are added in java 8
+	In case of CASing, all the methods are dependant on 
+		'get and modify' or
+		'modify and get'
+	In some cases, we no need the 'get' call and could save time for us. This is where we use Adders/Accumulators
+	There are LongAdder, LongAccumulator are used for this purpose, they won't return the value after modification
+	
+	It acts similar to the AtomicLong but didn't return the value. 	
 
 
 

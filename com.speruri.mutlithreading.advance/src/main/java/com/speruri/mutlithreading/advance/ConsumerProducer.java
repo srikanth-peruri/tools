@@ -1,4 +1,4 @@
-package com.speruri.mutlithreading;
+package com.speruri.mutlithreading.advance;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

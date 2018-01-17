@@ -139,6 +139,7 @@ There are 3 ways to shutdown the executorService
 2. Using locks , semaphores for Producer/Consumer pattern
 
 Intrinsic Locking
+	synchronization or volatile are the intrinsic locks.
 	It is nothing but the synchronization where we will have a Object as a lock in the class like.
 	private final Object key = new Object();
 		Only one thread will be allowed to get the key and then execute the synchronization block of code
@@ -150,6 +151,7 @@ LOCK
 	Lock is the java object which acts same as the synchronization block.
 		It provides the same exclusion, read and write ordering
 		Happens before link.etc
+		This is explicit locking using Lock interface
 	
 	Lock is an interface and ReentrantLock is the implementation
 		
@@ -169,6 +171,12 @@ LOCK
 		We create a lock object
 		we have several methods in the Lock object
 
+Mainly there are 3 types of Lock patterns
+	Interruptible Lock Acquisition
+	Timed Lock Acquisition
+	Fair Lock Acquisition
+	
+
 Interruptible Lock Acquisition
 	using lock.lockinterruptible
 		This is interuptible pattern
@@ -182,12 +190,106 @@ Timed lock acquisition
 	It also takes timeout parameter 
 	
 		lock.tryLock()
-				
+
+Fair Lock Acquisition
+	When mutliple threads tried to execute a block on synchronized block of code, then the thread is choosen randomly. When we declare the folowing
+			Lock lock = new ReentrantLock(true);
+	Then it becomes the fair lock
+	This is very costly and need to be careful while implementing this.
+	then the thread which comes in the first place will be given the key to enter the block of code
+	
+			
+Condition
+	Condition is an object from lock.
+	Lock generates the condition and it has await and signal methods similar to wait and notify
+	Condition also extends the Object class and we shouldnot call wait() and notify() of Condition since they won't work because we are not in the 
+		synchronization block
+	
+	The await() call is blocking and can be interruptible
+	There are 5 methods for await method
+		await()
+		await(millis, timeunit)
+		awaitNanos(nanotimeunits)
+		awaitUntil(date)
+		awaitUninterruptibly()
+		
+ReadWriteLock 
+	ReadWriteLock is an interface with two method
+		readLock()
+			return read Lock object
+		writeLock()
+			returns write Lock object
+	
+	
+	Rules are
+		Only one thread can hold the Write Lock
+		When Write lock is held, then no one should hold read Lock
+		As many thread can hold the read lock when no write lock is held
+	
+	This can be created as
+		ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+		Lock readLock = readWriteLock.readLock();
+		Lock writeLock = readWriteLock.writeLock();
+		
+	Wrap up
+		ReadWriteLock gives readlock and writelock. 
+		When getting the pair, we should get it from the same ReadWriteLock 
+		Useful in implementing the caches
+
+Semaphores
+	Came from the unix OS
+	Its a kind of lock, but it allows multiple threads to execute a block of code
+			
+	Semaphore semaphore = new Semaphore(5);
+	
+	semaphore.acquire()
+	semaphore.release()
+
+
+3 Controlling concurrent applications using Barriers and Latches
+
+Barrier
+	To have several tasks to wait for each other 
+	Suppose if we want to do heay computation, then we can provide each thread with a task.
+	Once all the threads are done with their processing, then we can merge operation to be run
+	We need some subsequent task to merge them
+	This is called barrier
+	
+	Assume that we need to compute the prime numbers till some certain number, then we can leverage the CPU cores for doing this
+	with multiple threads. Say for example, if the i7 CPU has 4 cores, then we can make use of 4 threads to compute and find the 
+	prime numbers
+
+	Finally we can merge all the sets to get the final super set	
+	
+	We can leverage the Cyclic Barrier for this task
+	
+	We can create a Cyclic Barrier with no of tasks passed to it as Runnables.
+		When each runnable done performing its tasks, then it calls the barrier.await()
+		Cyclic barrier counts the await() calls from all the threads. If the count is equal to the no of tasks generated on this barrier, then
+		it provides all the results back and we can also provide the callback function to perform post processing tasks. 
+	
+	Barrier also throws exception. It has 2 await methods
+		await() - waits indefinetely
+		await(millis, timeunit) - waits for the passed amount of time.
+	
+	Cyclic barrier is a 
+		tool which synzronize several threads between them and let them continue when they are reach common point
+		Its closed when created and will be opened when the threads having this barrier reaches a common point.
+		It can also reset
+	
+	
+Latches
+	Latches are similar to the Barriers exceppt one difference
+		Suppose we have an application which depends on many services like
+			Authentication Service, Data service, Order service..etc
+		In such case, if we use Barrier, it would be fine but, we should not make the barrier reset. Thus blocks everything and we might have an impresions that some services are not started properly 
+	 	we need a Barrier which can be opened but cannot be closed.
+		So this can be achieved with Countdown Latch
+	
+	Suppose the we have 4 tasks which was have the same Latch are executed, then it acts similar to the Barrier but the only thing is that it wont be reset or closed.
+	
 		 
 	
-
-
-
 
 
 

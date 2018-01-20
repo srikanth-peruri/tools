@@ -351,26 +351,126 @@ Adders and Accumulators
 	It acts similar to the AtomicLong but didn't return the value. 	
 
 
+Leveraging Concurrent Collections to Simplify the Application design
+New API's were introduced in Java 1.5 for easing the usage of Collections in the concurrent applications
+instead of we manually implement them, the JAVA API itself implement and give them to us.
+There are two branches of collections for this
+	1. Collection
+	2. Map
+	
+	Here is the collection API's
+	
+										Collection 
+											|
+								List 	   Set			Queue			
+								 |			|		  	  |
+										SortedSet		 Deque						BlockingQueue
+											|				|							|
+									  NavigableSet		TransferrableQueue			BlockingDeque
 
+	Here is the MAP API's
+				
 
-
-
-
-
+										MAP
+										 |
+						SortedMap				ConcurrentMap
+							|						 |		 
+						NavigableMap			ConcurrentNavigableMap
 	
+	Java has defined some Concurrent interfaces which are contracts which should be implemented by the people who are implementing these interfaces
+	Even Java Concurrent Collections also implement these contracts
+	Concurrency is very complex and dealing of 10threads is not the same as dealing of 10K threads
 	
+	Most of these collections follow the 'Copy On Write' structure
+		Copy On Write : When we insert a new element into a collection, then a new copy of that collection is copied to a new collection and then the new element is added to that new collection
+			All the threads currently reading that collection will be read from the old one and not the new one. 
+			Once the addition of the element is done, then the reference to the old one is replaced with a new collection reference and all the new threads will now read form new reference
 	
+Collection Interface implementations 
+	List, Set
+		We have two types of these collection
+			CopyOnWriteArrayList
+			CopyOnWriteArraySet
+			
+		These are useful when are many many reads and minimum writes. If wehave many many writes, then there would be many copies in the memory which will kill the performance of the application
+		Best usage example will be Application initializatoin which needs the config to be set only once and it will have many many reads only	
+	Queue, Deque
+		There are two types of Queues
+		Queue and Deque
+			
+		ArrayBlockingQueue
+			Its a bounded queue and elements cannot be added on futher. 
+		ConcurrentLinkedQueue
+			Its an unbounded queue into which we can add infinite elements.
+			
+	In computer science, we have two types of Queues, 
+		1. Stack - LIFO
+		2. QUEUE - FIFO
 	
+	In JDK, we have implementations for both Queue and Stack
+		Queue - Queue
+		Deque - both Queue and Stack 
+				
+	Consider the Queue operations on the BlockingQueue
+		These are the methods we have
+			1. add(E e) - throws an exception if the queue is full
+			2. offer(E e) - returns false if the queue is full
+			3. put(E e) - Blocks until space is available and then adds the value
+			4. offer(E e, timeout, timeunit) - waits for the time sent and then returns the boolean.
+		Other methods are
+			1. get - removes an element from the queue
+			2. peek - gets the element but not removes it
+			
+			
+Maps
+	There are implementations of Map for concurrency
+		ConcurrentMap and its two implementations are
+			ConcurrentHashMap
+			ConcurrentSkipListMap
+			
+	ConcurrentHashMap:
+		
+Underlying Implementation of the HashMap in Java
+	In JDK, Hashmap is built on Array
+		Each cell is called as a bucket
+		When we try to insert the key value pair in to that array, then Hashcode of the key is calculated and it was decided into which the key goes in
+		Once decided, in inserts the key value pair in to the array	
+		This insertion is a several step problem
+			1. Compute the hash value of the key
+			2. Check the Bucket is there or not for that key
+			3. Check if the bucket is already occupied or not
+			4. Update the value
+		In concurrent world, these steps should not be a problem
+			
+	The implementation of ConcurrentHashMapis changed in 1.8
+		It introduced many methods for working in parallel
 	
+	ConcurrentSkipListmap
+		Its another concurent map
+		Its based on a structure called Skiplist
+		A skip list is a smart structure used to create linked lists
+		The impementation rely on AtomicReference and doesn't need any synchronization 
+		Its been used for implementing Maps and set from jdk 8
+		Its basically implemented with nodes and not the Array
+			in this the keys are sorted
+			It ensures fast access based on the key since they are in sorted order
+			Its implemented with Atomic reference
+			
+		Never call size() on the concurrent map or concurrent set
+			
 	
-	
-	
-	
-	
-	
-	
-	
-	
+Module wrapup
+	What Structure should we use?
+		1. If there is fewer writes and large no of reads, then use COPY ON WRITE
+		2. If you have low concurrency, you can rely on the synchronization 
+		3. In high concurrency, we can use Skip lists with many objects or concurrent hash maps	
+		4. High concurrency with few objects is always problematic
+		
+Course Wrapup
+	Be careful when designing the concurrent code
+		1. Be sure to have a good idea on what you are doing
+		2. Concurrent programming is different from parallel processing
+		3. Try to delegate to the API as much as possible		
 	
 	
 	

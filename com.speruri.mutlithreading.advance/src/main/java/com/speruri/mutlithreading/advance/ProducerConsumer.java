@@ -1,8 +1,5 @@
 package com.speruri.mutlithreading.advance;
 
-import com.speruri.mutlithreading.advance.ProducerConsumer.Consumer;
-import com.speruri.mutlithreading.advance.ProducerConsumer.Producer;
-
 public class ProducerConsumer {
 
 	private static Object lock = new Object();

@@ -1,7 +1,4 @@
-package com.speruri.mutlithreading;
-
-import com.speruri.mutlithreading.ProducerConsumer.Consumer;
-import com.speruri.mutlithreading.ProducerConsumer.Producer;
+package com.speruri.mutlithreading.advance;
 
 public class ProducerConsumer {
 

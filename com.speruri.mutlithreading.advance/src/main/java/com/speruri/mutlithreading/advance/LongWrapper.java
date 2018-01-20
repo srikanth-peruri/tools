@@ -1,4 +1,4 @@
-package com.speruri.mutlithreading;
+package com.speruri.mutlithreading.advance;
 
 public class LongWrapper {
 

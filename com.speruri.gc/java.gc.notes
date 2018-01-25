@@ -1,0 +1,5 @@
+In the languages prior to Java like C++, we have to allocate memory to the variable as well as delete the object from memory
+Both are our responsibilities. If we forget deleting the object, then we might end up with memory leak
+
+When we create an object, GC will add it to the young space. When we don;t refer that object , then it cleans the object.
+We don't know when this happens. 

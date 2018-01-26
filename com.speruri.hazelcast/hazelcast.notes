@@ -1,0 +1,39 @@
+Hazelcast is a in memory map which is 
+	distributed
+	resilent
+	Clustered
+	NoSql key/value store
+	caching
+	Application scaling
+	Messaging
+	Data grid
+
+It could horizantally scale by auto detecing the nodes in the same network
+It comes in two different editions
+	Open source 
+		apache 2 license
+	Commercial version
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -13,7 +13,7 @@ public class LoaderTest {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException,
 			SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException,
 			InvocationTargetException, InterruptedException {
-		String pluginName = CustomPlugin.class.getPackageName() + "." + CustomPlugin.class.getSimpleName();
+		String pluginName = CustomPlugin.class.getPackage() + "." + CustomPlugin.class.getSimpleName();
 		Map<String, Object> map = new HashMap<>();
 		int count = 0;
 		while (true) {

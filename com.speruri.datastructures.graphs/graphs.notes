@@ -1,0 +1,101 @@
+Graphs
+	A graph is a set of vertices and edges.
+	Its not possible to have a graph with one vertex since the edge has to connect to another vertex
+	A vertex is an entity in the graphs which we connect
+	An Edge is the relationship between two entities i.e, 2 vertex
+	Vertex is represented by V
+	Edge is represented by E
+	
+	If there are two verticies and they are connected with Edge E, then its a valid graph
+	
+	
+	
+	For example, assume that the vertex here is people
+		And the edge could be any thing like professional relationship, personal relationship
+		Its called Professional graph
+		Linkedin is the example
+		
+	For example, assume that the vertex here is people
+		And Edge could be the personal social life. It would be Social graph
+		Facebook is the example
+		
+	Network could be treated as Graph
+	
+	Assume that the computers in the world is connected. Then its a graph and is called Internet
+	
+	
+Types of Graphs
+	Assume that you have two vertices and an edge connecting them together, then there could be 2 types of graphs
+	
+	1. Directed graph/Directed Edge
+		
+		A ---------> B
+		
+		This means that the relationship between these two vertices is directed. So, its called directed graph or directed edge
+		This represents we can only go from A to B and not from B to A.
+		A here is called the Source node
+		B here is called the destination edge
+		Directed Edges give raise to Directed Graphs
+		
+	2. Undirected Graph/Undirected Edge
+		These are two way relationship and go both ways
+		For example, he is my friend and i am his friend
+		A ----------- B
+		UnDirected Edges give raise to UnDirected Graphs			
+			
+	
+Consider the following Graph
+	
+Undirected Graph	
+	1. If the two nodes are connected by a single edge, then they are called the adjacent nodes
+	2. If a node is connected to multiple nodes, then we call it as degree of that node. 
+	So we call it as incident on a particular Vertex 
+	A node is said to have degree 3 if 3 nodes are connected to it with 3 edges.
+	3. The series of edges that connect the nodes is called a PATH
+	4. Nodes in a graph can form a Cycle
+	5. The graph is called ACyclic graph if there are no Cycles. So, we cannot traverse in cycle to come
+		to the source. Even there is one cycle, then we don't call it as Acyclic graph
+	6. The nodes in a graph is someway connected to someother node in the graph and its called
+	as Connected Graph
+	7. A connected graph with no cycles could be a n-ary Tree. In the other way, if tree has cycles, then
+		can be called as graph
+
+directed Graph
+	1. The vertices in the graph will have the directed edges and should follow the path
+	2. Its possible to have cycles in a directd graph
+	3. Most of the nodes may not be in the cycle
+	4. When we remove a single edge, then it might not have a cycle and this is called Directed Acyclic Graph (DAG)
+	
+Graph Representation
+	Graphs can be represented in 3 types
+		1. Adjacent Matrix
+			We can represent the graph as a Matrix
+			A matrix is nothing but a 2d array
+			Rows are vertices
+			Columns are vertices
+			Every vertex will have one column associated with it and one row is associated with it.
+			So the each cell in the matrix will represent the relationship between the two vertices. So they are called Edges
+			So if there are 'v' no of vertices, then we will have v^2 vertices in the matrix
+			
+		2. Adjacent List
+		3. Adjacent Set
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	

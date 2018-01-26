@@ -1,0 +1,128 @@
+How search works
+	Search is the finding of most relavant documents with your search terms
+	The search engine should do the following
+		1. First should know the document existence.
+		2. Index it
+		3. Relavant
+		4  Retrieve raked by relavance
+	
+	These are the core foundations of search algorithm
+		1. Web Crawler
+		2. Reverse Indexing
+		3. Scoring
+		4. Search 
+		
+ES nomenculature
+	ES is a Cluster of nodes containing one or nodes
+	Cluster will have a name and the nodes can join it by specifying the name of the Cluster.
+		Each node stores the data
+		Each node can find the other nodes in the cluster and they should be in the same network
+			Each nodes will have a name.
+		
+			The ES contains the Documents - Which is nothing but the data in JSON format
+				Every document should have a type and index. This is how we identify a document.
+			Logical grouping of these documents form TYPE
+				Collection of similar documents
+			All of these different types of Documents make up an INDEX
+				Index might have different types of TYPES				
+			
+			Splitting up the index on to multiple nodes is called Sharing
+				Each individual node will a shard means every node will have a subset of indexed data.
+				Sharding will speed up the process by searching on multiple nodes in parallel
+				This way you are searching on smaller subset of data parallelly on multiple nodes.
+			
+			To make cluster highly availbale
+				Every shard will have a corresponding replica in the cluster. This way one shard failure will not stop the search 
+			
+			An index can be split in to multiple Shards
+			A Shard can be replicated one or more times
+			An index in Cluster will have 5 Shards and 1 replica by default
+			
+
+Basics of search engine			
+	1. Get the data from the source
+	2. The search engine creates an Index with the terms in the document to the document itself by the process called reverse indexing technique
+	3. Score the terms by tokenizing the words and then give the score to each term
+	4. Search the reverse indexed terms and give the relavance to the documents by the use of scorings and then present them on the UI
+	
+This is how Elastic search works
+	1. We provide the data documents to be indexed to the ES
+	2. ES performs the reverse indexing techniques which simply maps the tokens in the document mapped to the documents itself
+	3. Es also gives the scores to the documents
+	4. ES searches this indexes using Query DSL (Domain specific language)		
+			
+			
+Query DSL
+	Its a search language which can be used to epress complicated queries that can be plugged in to the underlying lucene technology using JSON interface.
+	Its really greate for writing queries and can maintable and debuggable
+	
+Query Context
+	Whether the document is included in the search result or not
+	Score of the document
+	
+Filter Context
+	Whether the document is included in the search result or not
+	No Scoring
+				
+	
+Relavance algorithm
+	ES have TF/IDF algorithm
+		Term Frequency/Inverse Document Frequency		
+			
+			
+			
+Differences between the Search and Aggregations
+	Search
+		Inverted indexes of the terms present in the documents
+		The terms can be hashed and stored in the index
+		Which documents contains these search term
+	
+	Aggregations
+		Actual values presentin the documents
+		Actual values of the terms are needed but not the hashes. Hashes wont suffice				
+		What is the value of the field for this document
+		
+			
+Text values are stored in in-memory data structure called fieldData
+	fieldData is build on demand when the field is used for aggregations and sorting..etc
+	FieldData eats up a lot of memory
+	fielddata is disabled by default on the text fields
+	calculating the aggregations on text fields are lazy and will only invoke when you explicitly need that. Think before you do that
+	
+There are different types of aggregations in ES
+	Metric
+	Bucket
+	Matrix
+	pipeline
+	 			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

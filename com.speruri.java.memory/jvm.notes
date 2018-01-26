@@ -1,0 +1,87 @@
+When we develop a product, then we think about making it more readable, testable, scalable, adding new features..etc. But we also need to
+think of JVM Memory as well to get rid of these issues in production environment
+
+Java does have the Garbage collector. 
+	Java is th efirst main language to have the garbage collector.
+	This way developers need not to manually clean the memory
+	GC is just computer programs itself and is not a magic and cannot solve its problems by itself.
+
+Outages in production can leave bad reputation and loss a lot of money
+
+There are two methodologies in debugging the memory issues
+	Headless Chicken Approach
+		Many people do this.
+		Panic Driven
+		Stare at a lot of code
+		Guess at whats wrong
+		Try the same thing as last time - A developer might seen a related issue and apply the same approach and fails
+		
+	
+	Scientist Approach
+		Repeatable Solutions
+		Measure part of the code
+		alter code to fix the problem
+		Re-ensure that the changes made solved the problem
+		
+In this course, 
+
+1. we will have a set of utilities used to deep dive into the JVM and see
+	What is consuming the memory
+	what is allocating the memory
+	Object histograms
+	Heap dumps
+	Memory profiling
+
+2. Solving Memory Leaks
+	When we get OOM errors in Java applications. 
+	Its still possible to have memory leaks if we hold on to object references for long time
+
+3. Advanced Memory Leaks
+	Memory leaks involving clas holders
+	Its also possible for java to hold off heap buffers which cause complications when diagonising the memory leaks
+	We also see the memory leak issues with Thread local variables. This is a tricky
+	
+4. Solving OutOfMemory errors
+	Heavy weighted/Bloated applications with lower memory
+	
+5. Understanding Object allocation rate problems
+	Using new operators to create objects will cause the application latency since these are costly.
+	Also this makes the object to be collected by GC very late when we hold references on it 
+	This might also increase the GC pauses 
+	We will see how to solve these problems
+	 	
+			
+			
+			
+1. Building memory analysis toolkit
+	We have different sets of tools for inspecting the JVM
+	There are 3 different kinds of inspections we can perform on JVM
+		a. Inspecting the VM
+		b. Heap dumps
+		c. Memory Profiling			
+			
+a. Inspecting the JVM
+	Java comes with the commndline tool called JPS 
+	Ships with the JVM's like Sun java, Oracle Java, Open JDK
+	Its a command line tool
+	
+	Another tool is called JvisualVm
+	Its a GUI
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

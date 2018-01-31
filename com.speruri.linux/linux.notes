@@ -1,0 +1,402 @@
+Linux directory starts from root and it is /
+Directory system in linux os nothing but the tree structure
+
+/ - Root directory and everything starts from here
+/bin - binary and other executable files go here
+/etc - System configuration files go here. These files will have configuration settings of the application
+/home - user home directory somethign like /home/speruri
+/opt - optional or third party software live like google earth installs in here. 
+	So it contains the software that are not bundled with the OS.
+/tmp - stores the temp files. temp files will get cleared at boot time. 
+	Donot keep the files in tmp if they are long term
+/usr - user related programs will be here. 
+/var - contains variable data. i.e, the fiels hat constantly change
+
+Other file directories are 
+/export - shared file systems
+/home - home directories
+/lib - system libraries
+/lib64 - system 64bit libraries
+/lost+found - Used by the file system to store the recovered files after the file check has been performed
+/media - used to mount removable media ike CD-roms
+/cd-rom - used to mount CD-DOM
+/boot - contains the boot files of the OS
+/dev - device files, typically controlled by the OS and the system admins
+/cdgroup - Control Group hierarchies
+/mnt - used to mount the external file systems
+/proc - Provides info about the running processes
+/root The home directory of the root account
+/sbin System admins binaries
+/selinux used to display the info about the SElinux
+/srv - contains the data which is served by the syste,
+/srv/www - contains the web server files to be served 
+/srv/ftp contains ftp files
+/sys used to display sometimes the configure the devices known to the linux
+
+Application directory structure
+	/usr/local/crashplan/bin
+	/usr/local/crashplan/etc
+	/usr/local/crashplan/logs
+	/usr/local/crashplan/lib
+
+	Here the application is crashplan (which is not bundled with the OS) and the directories of it is mentioned like above
+	
+	/opt/avg/bin
+	/opt/avg/etc
+	/opt/avg/lib
+	/opt/avg/log
+	
+	Here avg is the third paty software which is not bundled with the OS and this has to be 
+	available to all the users in the OS, so installed at the OS level.
+	the above is user level and installed at the user level
+	
+	/opt/google
+	/opt/google/earth
+	/opt/google/chrome
+
+
+The most common directories we should know are
+	/
+	/opt
+	/etc
+	/home
+	/tmp
+	/var
+	/usr
+	/media
+	/bin
+
+Applications that are not shipped with the OS are installed at 
+	/opt
+	/usr/local
+
+
+SHELL
+	Shell is the application which interacts with the linux kernal
+	The GUI is called graphical shell
+	Shell accepts the commands and execute them for you
+	This is also called as command line interpreter
+	Some of the features are
+		Shell is the command line tool
+		Its very fast 
+		Server distro's comes with command line tools
+		desktop appications come with both GUI and command line
+			Some of the opreations line renaming every file in a directory will be tedious with GUI where as renaming with command line
+			is super fast.
+		Use GUi when it make sense and CLI when it make senselike
+			if we want to browse a website, CLI makes no sense
+					
+	Shell promt will be displayed as
+		[user@pcname:~]$
+			a normal user prompt
+		root@pcname:~# 
+			a super user
+	
+Root or super user
+	Its very powerful user and only be used by
+		system administratrs to
+			install, run, start an application
+	Day to day activities are run with user accounts but not the root account
+	root access will have special previlages and can delete everything
+	~ is used by the current user home directory
+	~speruri - goes to the /home/speruri directory
+	
+	if the file ends with ~, then its called a backup file
+	If the file starts with . , then its called hidden file
+	if the the file starts with .. , then its a 
+			
+Basic Linux Commands 
+	ls - list the directory contents
+		ls -l displays the long listing format. more info
+				
+	cd - change directory
+	pwd - present working directory
+	man - displays the online manual for a given command as argument
+		to navigate the man page, click
+			g - to go to top of the page
+			G - to bottom of the page
+			q- to quit the page
+			down arrow - one line down
+			up arrow - one line up
+	echo - displays the argument passed
+		displays the string which we passed. It also used to display the system variables
+			echo $PATH 
+				displays the system PATH variable
+				PATH is the location link to where the commands to be searched. 
+					when you type a command in the shell, then it searches for that command in the location mentioned 
+					in the PATH variable
+				for example, if the PATH value is 
+					/home/speruri/bin:/home/speruri/.local/bin:usr/local/sbin
+					then it searches for the typed in command in the /home/speruri/bin path and then
+					/home/speruri/.local/bin and then
+					usr/local/sbin until the command was found or the path are over.
+					if not found, then it shows "command not found"
+	which - tells the location path of the command. locates the command
+		which cat
+		which ls
+		which tac
+	
+	cat - concatenates the display files
+	tac - displays the contents of the files in reverse order. last line first and so on.
+	exit - exits the shell or current session
+	clear - clears the screen
+	
+Accessing directories
+	Directories are containers of files and other directoriews
+	it forms a tree struture
+	in linux
+		. - is current directory
+		..  is the parent directory
+		cd  Change directory
+		
+	pwd - present working directory
+	
+	mkdir - creates a directory
+	rmdir - remoes directory if the directory is empty
+	rm -rf <directory> - removes the directory recursively
+	
+Listing the files	
+	ls -l 
+		Executing this command will display the following
+		
+		Type - '-'
+			The type of the file is reprsented by 
+				- for file
+				! for symbolic link
+		Permissions - xrw--w-rw
+			Tells the permissions of the file
+		No of Links - 2	
+			Tells the no of symbolic links to that file
+		Owner name - root/speruri
+			Shows the owner of that file
+		Group Name - root/speruri
+			Shows the group name of that file
+		Size - 4096
+			size of that file
+		Last Modified datetime - 
+			Shows the last modified data and time
+		File name 
+			shows the file name
+		
+Hidden Files are shown as .filename 
+	starts with .
+	They are not seen by ls -l
+	We have to use ls - l -a	
+
+To show the file types
+	ls -F
+		@ - for links
+		/ - for directories
+		. - Executables	
+		
+	ls -t
+		shows the files sorted by time
+	ls -r
+		shows the files in reverse order
+	ls -latr
+		shows all files with reverse sorted order by time
+	ls -R
+		shows the files recursively
+	ls -color
+		shows the items in color
+				
+	tree
+		displays the folder structure as tree
+			
+	When dealing with the file name with spaces, then we should escape the space
+	or can include the file name in singlequotes
+		
+Files and Directory
+	rwx represents read,write and execute
+		r - only read the contents
+		w - can write into that file
+		x - execute that file as a program
+	
+				File									Directory
+	
+	r			read the file contents				Allows the file names in the directory to be read
+	w			Allows file to be modified			Allows entries to be modified within the directory
+	x			Allows the execution of the file	Allows access to contents and metadata for entries
+	
+Permission category
+	u - User
+	g - Group
+	o - Other
+	a - All
+					
+chmod
+	used to change the permissions
+	use the chmod followed by
+		ugoa - groups 
+		+/-  - add or remove
+		rwx - read write and execute
+		
+		
+		
+chgrp
+	change the group of the file which it belongs to
+	by default the permission set on a directory is 777 and
+	666 for files. 
+			
+umask
+	is for taking away the permissions
+	sets the file creation mask to mode if given
+	use -S to for symbolic notation
+	
+	
+find
+	recursively finds files in the path that match the expressions. If no arguments are supplied
+	it finds all the files in the current directory
+	for example
+		find <directory path> -name <pattern>
+			finds the files and directories that match the pattern
+		find <directory path> -iname <pattern>
+			finds the files and directories that match the pattern with ignore case
+		find <directory path> -name ls <pattern>		
+			finds the files and directories that match the pattern also displays the ls on those files
+			
+		
+locate
+	similar to the find command
+	faster that find
+	find command looks for the file/directory at that particular time and gives the matched results.
+	but where as locate command searches for the indexes for faster search
+	indexes are built everytime.
+		
+
+head 
+	displays the head of the file.
+	usually 10 lines are displayed
+
+tail
+	displays the lower lines of the files
+	-f is to follow the running files
+	
+	
+vi editor commands
+	vi editor command mode and navigation
+		j - down one line
+		k - up one line
+		l - move cursor to right
+		h - move cursor to left 		
+		w - move right one word
+		b - left one word
+		$ - end to the line
+		^ - beginning of the line
+	vi editor insert mode
+		i - insert at the cursor position
+		I - insert at the beginning of the line
+		a - append after the cursor position
+		A - append at the end of the line
+		
+	vi line mode
+		:w - save the file
+		:w! - force save the file
+		:q - quit the file writing
+		:q! force quit without saving
+		:wq! force save and quit
+		:x same as :wq
+
+Moving files
+	use mv to move or rename the file or directory
+	
+sort
+	sorts the contents of the file
+	-r sorts in reverse order
+	-k<word index> sorts on the word index.
+
+tar 
+	archiving the files using tar command
+	syntax
+		tar [-] c|x|f|t tarfile [pattern] 	
+
+	c - creates the tar file
+	x - Extract files from the archive
+	t - Displays the table of contents
+	v - be verbose, display the logs while extracting
+	z - use compression
+	f file - use this file
+	
+
+gzip
+	compress files
+	
+gunzip
+	uncompress files
+
+gzcat
+	concatenates compressed files
+	
+zcat
+	concatenates compressed files
+	
+wildcards	
+	wildcards are used to filter out the contents
+	globbing is a technique for expanding the wildcard patterns into a list of files/directories
+	wildcards can be used along with the commands 
+		rm, cp, ls..etc
+	
+	There are two main wild cards
+		*
+			its very useful and pwerfl when it is combined with other chars like
+				*.txt
+				a*.txt
+		?
+			matches only one character
+				?.txt	
+	
+Character classes
+	[]
+		matches any of the characters included between the brackets
+		Matches exactly one char
+		ca[nt]* matches
+			cat, candy, can..etc
+		
+	[!]
+		matches any of the characters NOT included between the brackets. Matches exactly one char
+		[!aeiou]*		
+			basketball
+			cricket
+	
+Named Character classes
+	[[:alpha]]
+		matches all the alphabet chars
+	
+	[[:alnum]]
+		matches the alpha numeric chars
+		
+	[[:digit]]
+	
+	[[:lower]]
+			
+	[[:space]]
+	
+Escaping
+	\
+		use to escape for any wildcards to include them in the search
+		
+
+IO types
+	I/O name 			Abbreviation	File Descriptor
+	Standard Input			stdin			0
+	Standard Output			stdout			1
+	Standard Error			stderr			2
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

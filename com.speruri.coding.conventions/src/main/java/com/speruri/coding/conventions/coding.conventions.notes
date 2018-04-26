@@ -1,0 +1,66 @@
+Project Planning
+	Feature requirements
+	Mockups
+	usecases
+	
+Code design
+	code organization
+	relationshsips between code structures
+	
+Code constructions
+	readable code
+	code with best practices
+	
+Meta programming skill
+	its not dependent on a programming language
+	applicable for all the domains
+	its an art of coding with best best practices
+	Code design and readability = your craft
+	
+Knowing when you write bad code
+	when facing issues to find particular feature after some days of that code development
+	bad code is hard to find
+	hard time understanding the code
+	variable names are not understandable
+	inconsistent naming of the variables
+	no closing of the conditional statements.
+	unexpressive booleans
+	no comments on what code does..this will make it hard to read the code after some time
+	
+		
+Structured Design
+	structure the code as black boxes
+	something like
+		you know what the expected inputs
+		you know what the outputs it should give back
+		you know its function (what it does to its inputs to produce the output)
+		you don't need to know how it carry out its function in order to use
+		we can use flow charts for displaying the relationships
+		
+	
+	We should have loose coupling rather than tight coupling
+	Its nothing but the interdependence
+		The fewer connections there between the two modukles will lower the chances of 
+		ripple effect:a defect in one module appearing as a symptom in another
+		We want to be able to change one module with minimum risk of having to change another module
+		
+	
+	Chained dependency
+		if x depends on y class and y depends on z class, then x also depends on the z class
+		Its always better if a module dependency is direct i.e, if it depends on a single module only
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

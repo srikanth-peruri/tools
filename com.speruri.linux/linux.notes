@@ -383,14 +383,543 @@ IO types
 	Standard Error			stderr			2
 
 
+File descriptors are the no of opened files
+These are helpful for the computers.
+Linux represents everything as a file
+This helps to redirecting the from std in to std out and others
+
+Redirections
+	> redirects the standard output to a file
+	  Overwrites (truncating) existing contents
+	  
+	>> redirects standard output to a file
+	  Appends to the existing contents
+	 
+	< Redirects the input from a file to a command
+		
+	& Used with redirection to signal that a file descriptor is being used
+	
+	@>&1 combines stderr and standard output
+	
+	2>file redirect standard error to a file
+	
+	>/dev/null	redirects output to nowhere. It throws away whatever is fed to it
+	
+	if you mention, > <somefile>, then the standard output is sent to that file, this is equalent to 1>
+	if we explicitly mention 2>, then the standard errors will go that mentioned file
+	we can also redirect the error to the same file as output
+		ls -l Sri* nothere 1>both.out 2>&1
+			
+	>/dev/null
+		ignore everything it got
+			for example, if we can to skip all the errors, then we can use them
 
 
+Difference between two files
+	We can compare two files and display the differences between them to the stdout
+	
+	diff file1 file2
+		displays the difference between file1 and file2
+		
+	sdiff file1 file2
+		side by side comparision
+		
+	vimdiff file1 file2
+		Highlights differences in VIM
+		
+Searching the contents of the file
+	grep [options] <pattern> filename
+	Use grep command to check the contents of the file
+		i - perform a search ignore case
+		c - Count the no of occurences in the file
+		n - precede output with line numbers
+		v - invert match, print lines that don;t match
+		 	
+	file - use this command to know the type of that file
+		file <fileNAME>		
+
+	pipes
+		| pipe symbol
+		cat file|grep <pattern>
+	
+	strings command
+		The binary files are not human readable, so for converting the binary to String, 
+		we use this command. These strings are unicode and gibberish
+		strings filename
+		
+	cut - cuts the selected portions of a file
+		-d delimter
+		-f file name
+		
+Copying the files over network
+	scp - secure copy
+		we can transfer the files from one server to the other by specifying the IP address
+		and credentials of the other server
+		
+	sftp - ssh file transfer protocol
+		We can copy the files in secure way
+	ssh
+		we can log into remote server with command line using this ssh
+		
+
+Customize the Shell Prompt
+	PS1 
+		we can customize the shell we are interacting by setting the value to the PS1 system variable
+		
+Shell Aliases
+	If we are frequently using some commands, then we can set those commands to aliases
+		These are used as 
+			Shortcuts
+			used for long commands
+			used for commands that we type often
+					
+ 	When we type 
+ 		alias
+ 			lists all the aliases of the current user
+ 			
+ 
+ All teh above settings are for only that session. If you want to persist those settings, then
+ 	you should export them to the ~/.bash_profile file and can use them anywhere
+ 	
+ 
+Environment Variables
+	We can set these variables which effects how the program behaves
+		printenv
+			to list all the commands in the current system
+		
+		echo $<envName>
+			displays that particular variable
+				
+ 		export VAR="value"
+ 			VAR = name of the variable
+ 			value = value of the variable
+ 			
+ 		unset VAR
+ 			will unset the env variable
+ 						
+Processes and Job Control
+	ps - lists the running processes
+		-e - Everything all processes
+		-f - Full format listing
+		-u <username> Display the processes for that user
+		-p <pid> Displays process running with that PID
+		
+	we can also use
+		pstree - display processes in a tree format
+		top - interactive process viewer
+		htop - interactive process viewer
 
 
+Background and foreground processes
+	<command> & 
+		will make the process to run in the background and will not interrupt us to do other taks
+		
+	ctrl + c - kills the foreground process
+	ctrl + z - suspend the foreground process
+	
+	kill <pid> kills the process with the PID
+	fg - brings the background process to foreground 
 
 
+cron jobs
+	we can repeat the tasks on a schedule using this cron job
+	use cron to schedule and automate the routine tasks
+	
+	cron - a time based scheduling service
+	crontab - a table that we can use to create, delete, update the cron jobs
+	 
+	cron job can be scedules as 
+		
+		* * * * * command
+		
+		minute (0-59)
+		  hour (0-23)
+		  	day of the month (1-31)
+		  	  month of the year	(1-12)
+				day of the week (0-6)
 
+	crontab file - install a new crontab from file
+	crontab -l lists your cron jobs
+	crontab -e edit your cron jobs
+	crontab -r removes all your cron jobs
+	
+	
+switching between the accounts
+	
+	su - switch to other user account
+		if no args passed, then it logs with super user.
+	
+	executing without any options is same as executing su as root
+		su = su root
+	
+	su options
+		- 	
+			A hypen is used to log with another user and will see how the another user sees at
+		
+		-c command
+			Specify a command to be executed
+			
+	whoami
+		returns the current account name
+	
+	sudo
+		used to run commands as another user. It uses the security privilages of other users
+		while executing the commands
+		
+		sudo is the admin's command.
+		running this sudo, you can log into other accounts with no password required 
+		it asks for your password again
+		
+		sudo su -
+			logs into the root account
+			options
+			
+				sudo -l
+					list all available commands
+				sudo command
+					runs the command as root
+				
+				sudo -u root command 
+					same as above
+				
+				sudo -u user command
+					run as specified user
+					
+		sudo su 
+			switch to the superuser account
+		sudo su - 
+			switch to super user account with roots environemnt
+			
+		sudo su - username
+			switch to the username account with his environment
+		
+						
+Shell history
+	~/.bash_history
+		all the commands are stored in this file.
+	~/.history
+		same as above
+	~/.histfile
+		same as ablve
+		
+	export HISTSIZE=1000
+		max commands to remember						
+					
+	history
+		using the command history will show all the last 1000 commands that were executed in the past				
+		we can use !<commandnumber> to repeat the same command
+	
+		we can use !! to execute the same last command
+		
+		we can use !<string> repeat the same command that starts with that string.		
+	
+	ctrl+r = searches the history
+	
+	! here is also called as BANG
 
+					
+	!:N
+		executes the N command in the commands
+	
+	!^
+		executes the first command
+	
+	!$
+		executes the last command
+		
+						
+					
+Package manager
+	A package is a collection of files to make a software application
+	The data/metadata in the package include
+		package description
+		version
+		dependencies
+	
+	Package manager 
+		uses to installs, upgrades and removes the packages
+		Manages dependencies
+		keeps track of what is installed 
+		
+		
+	There are basically two types of package formats
+		rpm
+			yum is the package manager for the rpm packages
+		deb
+			apt-get is the advance package manager for the .deb packages
+	
+	
+	
+	rpm based distros
+		redHat
+		CentOs
+		Fedora
+		Oracle Linux
+		Scientific Linux
+							
+	yum is the package manager for the rpm packages
+		yum search string  
+			searches for a package
+		yum info [package]
+			gives the info of package
+		
+		yum install [-y] package
+			installs the package
+			y switch will answer yes for all the prompts
+		yum remove package
+			removes the package
+			
+			
+	in addition to yum, we can also use rpm command
+		rpm -qa
+			lists all the installed packages
+		rpm -qf <pathtofile>
+			lists the files package
+		rpm -ql package
+			lits package files
+		
+		rpm -ivh package.rpm
+			installs the package
+		
+		rpm -e package
+			erases (uninstall) the package
+			
+					
+
+	Advance packaging tools
+		apt-cache 
+			is for the package info
+			
+			apt-cache search string
+		
+		apt-get install [-y] package
+			installs the package	
+		
+		apt-get remove package
+			removes the package
+			but not the configs
+			
+		apt-get purge package
+			removes the package and its config files
+			
+		apt-cache show package
+			shows info abt package
+			
+	In addition to apt-get, we can also use the dpkg to interact with the package manager
+		dpkg -l
+			lists the installed packages
+		
+		dpkg -S <pathtoFile>
+			lists files package
+			
+		dpkg -i package
+			installs the package
+			
+		dpkg -L package
+			lists all the files in package
+			
+Linux Boot Process
+	BIOS
+		Basic input output System
+		This is the special firmware of the computers which runs the POST test
+		This is software independent
+		not unique to Linux
+		Primary purpose is to find and execute the boot loader
+	POST 
+		Power On Self Test
+		performs the hardware checks
+	
+	BIOS knows about the bootable devices like
+		Hard Drives
+		USB drives
+		DVD drives..etc
+		The device order can be changed
+			
+	BIOS loads the boot loader
+	
+	Boot loaders
+		there are different kinds of boot loaders
+			LILO
+				Linux Loader
+			GRUB
+				Grand Unified Bootloader
+				replaced the LILO
+		Boot loader starts the Operating system
+		Boot loader starts OS with different options
+		
+	initrd
+		initial RAM Disk
+		Its a temporary file system that is loaded from disk and stored in memory
+		contains helpers and modules required to load the permanent OS files system
+	
+	/boot directory
+		contains the files required to boot linux
+		
+	Kernel Ring Buffer
+		contains messages from the linux kernel
+		dmesg
+		/var/log/dmesg
+			contains the linux logs during the bootup
+	
+	Runlevels/Description
+		
+	Runlevels are controlled by init programs
+		/etc/inittab
+		
+		Systemd
+			uses targets instead of runlevels
+			
+	 
+Learn again the Linux Boot Management
+			
+syslog standards
+		 
+Learn again the Linux logging
+							
+				
+Disk management
+	Disk is splitted into partitions
+	each partition will not interfere into other partitions
+	its better to have the home directories of all users in one partition so that we can avoid filling up the space
+	partitions allow you to seperate the data
+	can protect the overall system
+			
+	MBR
+		Master Boot Record
+			Is the boot sector at the beginning of the storage device
+			contains the information on how the partitions are organized on disk
+			can support only a disk space of 2TB
+			Its been replaced by GPT - GUID partition table
+			
+	GPT
+		GUID Partition Table - Global Unique Identifier Partition Table
+		Replacing the MBR
+		supports upto 9.4ZB
+		supports 128 partitions
+		works with only new OS
+		is a part of UEFI
+			UEFI - Unified Extensible Firmware Interface
+			UEFI is replacing BIOS
+		
+								
+Mount Points
+	Mount Point is a directory used to access the data on a partition
+	/ is always a mount point
+	Every hDD will have atleast one single mount point i.e, /
+	user directories canbe mounted 
+	/home/speruri
+		/home/speruri is the partition on the /home
+		
+ 			
+ 	fdisk
+ 		partitioning tool
+ 		alternatives are gdisk, parted
+ 	
+ 	
+File System
+	 Linux mostly uses the file system called ext
+	 ext = Extended File System
+	 There are also ext2, ext3, ext4 file systems.
+	 
+	 
+Learn again the Linux Disk Management
+	 			
+ 			
+user and Group Management
+	 Linux is a multi-user OS
+	 it has multiple user accounts and can be logged in at the same time
+	 Each Account has a
+	 	Username (or loginID)			
+ 		UID (user ID) this is unique
+ 		Default Group
+ 		Comments
+ 		Shell
+ 		Home directory location
+ 		
+ 	All the info is stored in etc/passwd file
+ 	
+ 	The entries are like
+ 		username:password:UID:GID:comments:home_dir:shell
+ 		
+ 		for eaxmple
+ 			speruri:x:1000:1000:Srikanth Peruri:/home/speruri:/bin/bash	
+ 			
+	 		x here is password and it is in encrypted format and stored in /etc/shadow file
+	 		
+	 etc/shadow
+	 	contains the enrypted passwords.
+	 	
+	UID for root is 0
+			
+	 			
+ 	shell
+ 		A shell will be executed when an user logs in
+ 		list of available shells are in /etc/shells
+ 		The shell doesn't have to be a shell
+ 			This gets executed even its not a shell upon login
+ 		
+ 	Adding the user
+ 		adduser [options] username		
+ 		We can also create the acounts for the applications or system processes
+ 			
+ 	removing the user
+ 		userdel [-r] username
+ 			use -r to remove the user home directory as well
+ 				
+ 			
+ 	update the user
+ 		usermod [options] username
+ 				
+ 			
+Managing Groups
+	 group details are stored in /etc/group file
+	 
+	 groupadd groupName
+	 	adds group
+	 
+	 groupdel groupName
+	 	deletes group
+	 	
+	 groupmod groupName
+	 	modifies group
+	 	
+	 
+Networking in Linux
+	
+	TCP/IP
+		standard for the network
+		TCP 
+			is responsible for establishing the connection between two devices
+			maintains the communication
+		IP
+	 		transfers the data from one to other
+	 		
+	 	Hosts
+	 		devices on the network and have IP address
+	 		
+	Each device on the network should have these
+		IP
+		Subnet 
+		Broadcast address
+		All these are 4 sets of octets i.e, 8 bits each
+		and will be between 0 - 255
+		 
+ip address
+	ip addr
+	ip a
+	ip address show ip a s	 			
+ 			
+ 			
+setuid
+	 When a process is started, it runs using the starting UeerId and GroupId
+	 setuid = set User ID upon execution
+	 ping
+	 		 
+ 
+Script 
+	is a series of command line programs
+	
+ 
  
  
  

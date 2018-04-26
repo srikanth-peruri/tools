@@ -1,0 +1,115 @@
+Pointers
+	Pointers are the basic of any programming language.
+	Pointers are conceptually difficult and hard to wrap ones head araound
+	But they are the building blocks of any programming language
+	
+	Pointers refers to the memory location 
+	Pointers are the foundation blocks on which hard programming problems are built
+	
+	Pointer make you forcefully conceptualize the memory layout and allocation which are useful
+	for everything to build. 
+	
+	Pointers are the great warmup concepts and great first step for interviews
+	
+How is memory laid out for a program
+	Memory is divided into blocks of certain size 
+		32bits or 64 bits based on the OS
+	Each block has specific address
+	address is in hexa decimal strings
+	This means every location can be accessed by its address
+		
+	Its very painful to deal directly with addresses.So we dnt recommend that way of processing 
+		using addresses directly
+	
+	So, thats the reason why we refer the memory address by using variables. 
+	each variable refers to a memory location. So we no need to worry abt the hexa decimals an memory pointers
+	
+How is this information stored in memory
+	Each Memory block has address
+	we refer them by a variable name
+	The RAM is divided into blocks of memory and each block is of 1byte of size
+	when an integer is initialized, then 4blocks each of 1byte is allocated in memory and is referenced by the variable name
+		
+What is a pointer
+	In C/C++, We can also refer that memory address using another variable like
+		int a = 25;
+		int *p = &a;
+		printf a; //25
+		printf p;// prints the start address of the a
+		printf *p;//25 - dereferencing
+		print &p; //prints the address of the pointer
+		
+How to setup the pointer
+	int *pointer = &a;
+		a here is another variable
+						
+What types do pointer variables have?
+	Integer
+	Char
+	boolean
+	structs
+	
+	Pointers can point to any type of variable
+	For example,
+	
+		Pointer to integer is int *intPointer
+		Pointer to integer is char *charPointer
+		Pointer to integer is float *floatPointer
+	
+Why do we have different types of Pointers when we point to the addresses of the memory?
+
+
+Pointer need to know what type they point. This is called pointer arithmetic
+
+
+Every data type available in C, can have a corresponding pointer type which points to the address
+which holds a value of that data type
+
+Arrays in C are actually pointers
+	int arr[4] = {1,2,3,4};
+		we access these elements as arr[0],arr[1],arr[2]..etc
+	array variable is a pointer.
+	 	in this example, arr is a pointer to the arr and it points the very first element.
+		and accessing the other elements will be done by incrementing the pointer address
+		
+Pointer Arthimetic with arrays
+	The pointer points to the first position of the array
+	when we increment the pointer, then the pointer points to the second element of the array 
+	 	and accessing *intPtr gives the second value of the array
+	 	
+	
+	If we know 
+		the first element address of the array and
+		the type of the elements in the array,
+	then you can calculate the addresses of the remaining elements
+	
+	so we have different types of pointers like int pointer, char pointer to access the 
+		elements of an array
+	 
+ 		
+	Strings in C are just character arrays
+	we can assign the char pointer to the string since a string is alo character
+		char* str = "Hello World";
+
+	
+	(*str+1),(*str+2),(*str+3) gets the chars in the string.
+	we can also use str[1]str[2] to access the characters
+	
+	Strings in C are nothing but the character Arrays
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

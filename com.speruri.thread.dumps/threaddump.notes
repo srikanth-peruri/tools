@@ -1,0 +1,91 @@
+Thread dump
+	represents the runtime state of the program
+	Thread dump is the collection of all the current threads spawned by JVM and their state
+	
+	
+Thread Call stack
+	In multi-threaded environment, each thread is having a method stack
+	when a method is called by the thread, then it will be pushed into the stack, when it finishes that method execution,
+		then that method is poped from the stack. It follows LIFO funtionality
+
+Capturing Thread dumps
+	we can use 3 major tools for getting the thread dump of a running JVM process
+		SIGQUIT PID
+			built-in tool of linux which captures the thread dump of the running process.
+		jcmd
+		
+		jstack
+						
+Thread States
+	New
+	Runnable
+	waiting
+	timed_waiting
+	Blocked
+	Terminated
+
+Whats inside the Thread dump
+	Basically there are 3 types of Threads
+		JVM Threads
+		Application Threads
+			These are the main application threads which we are interested in
+		Heap Reports
+
+	
+Structure of the Thread dump
+	
+"qtp1482635277-113 Acceptor3 SslSelectChannelConnector@0.0.0.0:443" Id=113 in BLOCKED on lock=java.lang.Object@4d6ce2ec owned by qtp1482635277-117 Acceptor7 SslSelectChannelConnector@0.0.0.0:443 Id=117
+	
+	Name: Name of the thread
+	Number ID: #number is the sequence number of the thread created by JVM. JVM allocates a number to each thread
+	JVM Priority: prio is JVM threads priority
+	OS Priority: "os_prio" is the OS thread Priority
+	Thread Address: tid is the Thread address in memory
+	Native ID: nid is the native ID assigned by the underlying OS to the JVM thread.
+	Condition: tells the condition of the current thread
+	Thread state: state of the thread
+	Thread call stack: Call stack of the thread
+	
+ 
+Thread States
+	Runnable
+		The thread is actively invoking the code. 
+	waiting
+		the thread in this state will wait indefinetely unless some other thread wakes it up
+			object.wait()
+			lock.lock()
+			
+	timed_wait
+		waits for some given amount of time
+		
+				
+	Blocked
+		The thread waits for monitor lock to become available
+	
+	
+	
+File System read/write in java
+	InputStream 
+		reads the data
+	OutoutStream
+		writes the data
+		
+		These two will delegate the calls to  underlying C/C++ applciations
+		 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

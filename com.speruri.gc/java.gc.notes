@@ -2,4 +2,187 @@ In the languages prior to Java like C++, we have to allocate memory to the varia
 Both are our responsibilities. If we forget deleting the object, then we might end up with memory leak
 
 When we create an object, GC will add it to the young space. When we don;t refer that object , then it cleans the object.
-We don't know when this happens. 
+We don't know when this happens.
+
+		
+Java virtual Machine : memory management
+	Whenever a variable is referencing an object like
+		Account acc = new Account();
+	then the acc will not get cleared untill it was cleared. JVM GC might not clear this until we release this
+		acc = new Account();
+	this will make the acc variable to get asigned to another account and the old account loose the reference
+	then the older reference is cleared by GC.
+	
+	
+Forms of GC
+	Do nothing
+		It does nothing but will not touch the live objects
+	Reference Counting
+		uses addref, release methods for incrementing the references and decrementing the references on an object
+		sometimes we might get a situation where an object A is reference object B and then object B referencing object A
+		since there are no other references, these will get freed
+	Mark and Sweep
+		It works in 2 phases, one phase is of marking all the references of an object
+		and the sweeping frees the object space for further usage
+		It has 3 phases involved
+			Mark
+				goes through all the objects in use and marks an object if its not in use
+			sweep
+				frees up the memory if the reference count is 0
+			compact
+				compacts the memory
+					
+	Copying
+		it works hand in hand with 'mark and sweep' GC. it copies the live object to another space
+		have 2 spaces fromSpace, toSpace. It also contains the mark and sweep but the after the sweep space,
+		the live objects are moved to toSpace by compacting the space
+	Generational GC
+		This checks if the object can be cleared or not. If the object survives one garbage collect, 
+		then it assumes that the object will live longer and will not touch it again for some time
+		it mainly contains the 2 generation spaces
+			young generation
+			old generation
+		whenever the object survives the sweep process, it will be promoted to the old generation
+		 	
+	Incremental
+		Its a generational GC which doesn't see all the memory all the times	
+		
+		
+Things to consider
+	stop the world events
+		stops the application for GC. This should be avoided
+	throughput
+		throughput of the GC running
+	Memory framentation
+		fragmenting the memory for easy access
+					
+	Differnet GC's 
+	
+	Multi-core
+			
+Basic ideas
+	Memory space divided in to
+		Young generation
+			all the newly allocated objects will go into this eden space
+			GC runs on this frequently to free up the space
+				This in turn contains 2 survival spaces.
+		old generation/tenured space
+			the objects which escape the GC collect, will be moved into this space. 
+			These objects will live longer but garbage collected after sometime 
+		permanant generation
+			These are the permanent space in which the objects will not be cleared until application terminates
+		
+		
+Minor Garbage Collection
+	Since all the young objects are allocated in eden space, the GC collect will transfer the survived
+	objects to the survival spaces.
+	Once the eden space is full, then it is freed up. This is called minor GC
+
+Major GC
+	This is slower and we would like to run this for lesser times
+	this scans all the heap space
+	triggered when the tenured/old space is full
+	collects old and you generation
+	This is also called Full GC
+	
+TLAB
+	ThreadLocal Buffer 
+		Each thread will have its own buffer in the eden space
+		
+What does Live means
+	the objects might have references to other objects.
+	This may be from stack frames, static variables, young objects..etc
+	
+		
+Card Table
+	when a old gen object refers to a young gen object then an entry will be logged into 
+	this card table to avoid the scanning of whole old gen to clean up the young gen object
+	if an young object is to freedup, then we should see whether it has any references to 
+	an object in the old gen. instead of checking the whole old gen, it checks this card table
+	to verify whether this is having any references
+		
+Different Garbage collectors
+	Since, we know about different GC types, We can chose what type of GC should be used
+	at runtime by passing the VM arguments
+	
+	Serial GC
+		-XX:+UseSerialGC
+	parallel for young space, serial for old space
+		-XX:+UseParallelGC
+	parallel young and old space gen
+		-XX:+UseParallelOldGC
+		
+	concurrent mark sweep with serial young space collector
+		-XX:+UseConcMarkSweepGC
+		-XX:+UseParNewGC
+		
+	concurrent mark sweep with parallel young space collector
+		-XX:+UseConcMarkSweepGC
+		-XX:+UseParNewGC
+		
+	G1 GC
+		-XX:+UseG1GC
+		
+
+Serial Collector
+	Single Threaded
+	Stop the World collector
+	Mark and Sweep
+	Ok for small applications running on the client
+	Not for the Enterprise applications
+	
+Parallel Collector
+	Mutliple threads for minor collection
+	single thread for major collection
+	same process as serial
+	use on servers
+	
+			
+Parallel Old Collector
+	Multiple threads for both major and minor collections
+	used over Parallel collector
+	
+Concurrent mark and sweep collector
+	
+			
+G1 collector
+	introduced in java 6
+	meant for server applications
+	runs in multi processor with large memories
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		 
+			
+	
+ 

@@ -11,6 +11,7 @@ import com.speruri.java.cryptography.symmetric.SymmetricEncryptionUtils;
 
 import junit.framework.Assert;
 
+@SuppressWarnings("deprecation")
 public class KeystoreUtilsTest {
 
 	@Test
@@ -20,22 +21,19 @@ public class KeystoreUtilsTest {
 		String keystorePassword = "keyStorePasswod";
 		String keyAlias = "foo";
 		String secretKeyPassword = "keyPassword";
-		KeyStore privateKeyJavaKeyStore = KeystoreUtils.createPrivateKeyJavaKeyStore(keystorePassword, keyAlias, secretKey, secretKeyPassword);
+		KeyStore privateKeyJavaKeyStore = KeystoreUtils.createPrivateKeyJavaKeyStore(keystorePassword, keyAlias,
+				secretKey, secretKeyPassword);
 		Assert.assertNotNull(privateKeyJavaKeyStore);
-		
-		
+
 		privateKeyJavaKeyStore.load(null, keystorePassword.toCharArray());
-		
-		
+
 		KeyStore.PasswordProtection entryPassword = new KeyStore.PasswordProtection(secretKeyPassword.toCharArray());
 		KeyStore.SecretKeyEntry secretEntry = (SecretKeyEntry) privateKeyJavaKeyStore.getEntry(keyAlias, entryPassword);
 		SecretKey secretKeyFromKS = secretEntry.getSecretKey();
 		Assert.assertNotNull(secretKeyFromKS);
-		
+
 		org.junit.Assert.assertEquals(secretKey, secretKeyFromKS);
-		
-		
-		
+
 	}
 
 }

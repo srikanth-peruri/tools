@@ -1,5 +1,7 @@
 package com.speruri.java.cryptography.keystore;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.security.KeyStore;
 
 import javax.crypto.SecretKey;
@@ -23,7 +25,22 @@ public class KeystoreUtils {
 
 		// Then finally set the key alias, pwd, entry into the key store
 		keyStore.setEntry(keyAlias, privateKeyEntry, entryPassword);
-
+		FileOutputStream fos = null;
+		try {
+			fos = new FileOutputStream(new File("keystore.jks"));
+			keyStore.store(fos, keystorePassword.toCharArray());
+			System.out.println("Keystore created");
+		} catch (Exception e) {
+			throw new RuntimeException("Exception while saving the keystore.." + e);
+		} finally {
+			if (fos != null) {
+				try {
+					fos.close();
+				} catch (Exception ignore) {
+					// TODO: handle exception
+				}
+			}
+		}
 		return keyStore;
 	}
 

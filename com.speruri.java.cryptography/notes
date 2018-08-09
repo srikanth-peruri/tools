@@ -1,0 +1,97 @@
+Cipher Text: encrypted text which got generated
+Key: value that sets the output of encryption function.
+Plain text: the original text
+Salt: Value to enhance the randomness of a one-way function
+
+Cryptography Functions
+	Digital Signatures
+		Function to verify authenticity
+	Encryption
+		two way mathematical function which encrypts the data with a key. It could be asymmetric or symmetric
+	Hashing
+		Once way mathematical function to map the data
+			
+	
+JCA - Java Cryptographic Architecture
+	Standard API for cryptography in java
+	
+JCE
+	Its the default provider of the JCA
+	It may not support all the algorithms today, we may need to use the third party providers
+	
+	 
+Asymmetric (PKI) and Symmetric (Shared) encryption
+	Symmetric (Shared) encryption
+		uses the shared key
+		Both should have the same key
+		
+	Asymmetric 
+		Uses two keys, one to encrypt and the other to decrypt
+			
+Never Do
+	Donot store the encrypted password in database
+	dnt use weak hash algorithms
+	never store passwords in plain text
+
+Good password Hashing algorithms
+	Use only Not Craked hash algorithms
+		Dnt use MD5, SHA-1, SHA-2
+	Use only not suspectible to brute force
+		
+	Inherit slowness
+	
+Broken
+	md5 is cracked and fast to compute
+	sha1 is cracked and fast to compute
+	sha2 is fast to compute		
+	sha3 is not a standard and fast to compute
+	
+Possibilities
+	PBKDF2
+	BCrypt
+	SCrypt
+		
+Entropy
+	more the entropy , more difficult to crack a password.
+	Entropy is more if the length of the password is larger 
+	
+BCrypt
+		
+	
+	
+Digital Signatures
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	

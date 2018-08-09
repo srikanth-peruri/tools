@@ -1,0 +1,57 @@
+Two types of complexity
+	Space complexity
+		How much space (memory) does an algorithm use
+	Time complexity
+		How much time would an algorithm consume
+		It out-performs the space complexity since space is not an issue
+		Since the processing time of the various computers are different, we consider the
+			no of steps that an algorithm takes to finish the task. 
+			This is generic 	
+	
+	
+For analysing the algorithms, we should see the no of items that we are giving as input.
+	say for example, 10 items -> 10ms
+					1000 items -> 100ms
+		As the size grows, the time also grows. so, no of items is directly proportional to time
+						
+	Order of growth : This is how the algorithm scale based on the input items
+	Asymptotic Analysis: Computing the running time in mathematical units of computation. 
+		linear O(n) -> it grows linearly with input size. 
+		Quadratic O(n^2): It grows at rate of n^2 with input size. In worst case, the time complexity would not be more than n^2.
+		Triple O(n^3) : Grows at rate of n^3 with input size. In worst case, the time complexity would not be more than n^3.
+	Its the worst case scenario	
+	We don't bother about the smaller size inputs. We take larger and larger input size
+		 
+	O is the Big O (Ordo) notation
+	
+Big theta notation	
+	
+Big Omega Notation
+		
+	
+	
+	
+Abstract Data Types
+	The Interface which defines the behaviour. Its a specification.
+	It doesn't have any implementation
+	Ex: Stack, Queue, Priority Queue, Dictionary/Hashmap	
+	
+Data Structures
+	Actual implementations of the ADT's
+	The actual representation of the data
+	The aim is to store and retrieve the data efficiently
+	What we want: able to insert/finditems in O(1) time
+		able to retrieve in O(1) as well
+	Ex: Arrays, linked lists, binary trees, heap , array
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

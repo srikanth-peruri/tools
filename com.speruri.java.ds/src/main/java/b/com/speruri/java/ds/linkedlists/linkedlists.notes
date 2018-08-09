@@ -1,0 +1,76 @@
+Linked lists are the nodes referening to the other nodes
+	A Node is composed of data and a reference to the other node
+	Like 1st node has a reference to 2nd node. 2nd node to 3rd..so on
+	So, we can traverse all the nodes based on the reference of the next node.
+	The last node will have null as reference to the next node. i.e, it will have null as next node
+	Can be used to implements other data structures like stacks, queues
+	Linked lists will not have indexes at all like arrays and cannot be used indexes
+	So, for finding the data, we should do linear search and is O(N)
+	if inserting into first element, then no moving of other nodes are needed.
+	
+Advantages
+	Linked lists are dynamic in length
+	we no need to mention the size of the list like Arrays
+	The size grows dynamically with the insertion of nodes
+	The elements might be of anytype. But array elements are to be of same type
+	It allocates memory in runtime. Not like arrays which allocate ahead of time
+	Easy to implement
+	
+Disadvantages
+	Its hard to reverse traverse 
+	wastes some memory since it has to maintain the reference to the other nodes
+	Cannot be searched with indexes like arrays. In array, we can access with index which takes O(1). Where as in linked lists, we have to traverse
+		all the nodes to find the element which is O(N)
+	Reverse traverse cannot be done since each node will have only reference to next node but not the node before to it. This is fixed with Doubly linked lists
+		
+Operations
+	insertAtFirst
+		Inserting at first node is very easy since we just need to update the reference of the new node to the next node. 
+		For example, if there are no nodes in the list, then we can insert a node by updating the reference to null since there are no nodes on the list
+		if we need to insert the 2nd element, then we update the reference of this new node to point to the 1st node which we inserted previously
+		Since its insertion at the beginning, it takes O(1) complexity
+		The same in case of Array's, it cakes O(N) since we need to move all the items in the array
+			
+	insertAtLast
+		inserting the item at last is very complex since we have access to the root of the node only
+			and need to traverse all the way to last node to insert the new node.
+		We have to traverse until we see the null reference and then add the new node there
+		Once we get the node, we will insert the new node and update the last nodes reference to this new node
+		Its O(N) complxity since we need to traverse all the way to the end
+		
+	removeFirstItem	
+		Its very fast since we no need to update any references. Just remove the root node
+		it O(1)
+		
+	remove(item)
+		The item has to be searched in the list and then remove it.
+		And then update the reference of the node before to it.
+		It takes O(N) when removing the last node
+				
+		
+Arrays vs Linked lists
+Search Operation
+	Arrays can be accessed with index which takes O(1). But where as if you dont know the index, then you have to traverse the whole array
+	But where as in case of Linked lists, we should start from the root node and search 
+		for the element by matching every element in the list.
+		This is O(N) 			
+	So, search in arrays are better than linked lists if you know the index.
+	 	
+Deletion
+	Deletion of item in array will take O(N) since we need to move all the other items in the list
+		removing the first element takes O(N) since we need to move all the other elements
+		But while removing the last item, it takes O(1)		
+	Where as linked list takes O(1) since all we need to remove the node in the list and update the reference
+	Linked lists are better in case or removal
+		
+Memory management
+	Arrays doesnt need any memory to store the references
+	Where as Linkedlist are not memory friendly
+	
+
+	
+		
+		
+		
+		
+		

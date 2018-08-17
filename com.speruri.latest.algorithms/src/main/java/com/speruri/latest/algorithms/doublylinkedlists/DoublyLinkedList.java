@@ -64,6 +64,7 @@ public class DoublyLinkedList<E> {
 				break;
 			}
 			n = n.next;
+			//sys
 			counter++;
 		}
 

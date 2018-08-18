@@ -2,8 +2,7 @@ package speruri.jpa.interfaces;
 
 import speruri.jpa.pojos.Application;
 
-public interface IApplicationDAO {
-
+public interface IApplicationService {
 	void addApplication(Application argApplication);
 
 	void updateApplication(Application argApplication);

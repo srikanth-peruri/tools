@@ -1,4 +1,4 @@
-package speruri.jpa;
+package speruri.jpa.impl;
 
 /**
  * Hello world!

@@ -1,4 +1,4 @@
-package speruri.jpa;
+package speruri.jpa.impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,25 +22,31 @@ public class ApplicationDAO implements IApplicationDAO {
 
 	public void updateApplication(Application argApplication) {
 		Application application = this.getApplicationById(argApplication.getId());
-		application.setDescription(argApplication.getDescription());
-		application.setName(argApplication.getName());
-		application.setOwner(argApplication.getOwner());
-		this.entityManager.flush();
+		if (application != null) {
+			application.setDescription(argApplication.getDescription());
+			application.setName(argApplication.getName());
+			application.setOwner(argApplication.getOwner());
+			this.entityManager.flush();
+		}
 
 	}
 
 	public void deleteAppliaction(String argId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void searchApplication(String argId) {
-		// TODO Auto-generated method stub
-
+		Application application = this.getApplicationById(argId);
+		if (application != null) {
+			this.entityManager.remove(application);
+		}
 	}
 
 	public Application getApplicationById(String argId) {
 		return this.entityManager.find(Application.class, argId);
+	}
+
+	public boolean applicationExists(String argName, String argOwner) {
+		String jpql = "from Application as a where a.name = ? and a.owner = ?";
+		int count = this.entityManager.createQuery(jpql).setParameter(0, argName).setParameter(1, argOwner)
+				.executeUpdate();
+		return count > 0;
 	}
 
 }

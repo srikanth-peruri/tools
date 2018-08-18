@@ -26,6 +26,7 @@ public class ApplicationDAO implements IApplicationDAO {
 			application.setDescription(argApplication.getDescription());
 			application.setName(argApplication.getName());
 			application.setOwner(argApplication.getOwner());
+			// JPA automatically updates the Entity based on the Context
 			this.entityManager.flush();
 		}
 

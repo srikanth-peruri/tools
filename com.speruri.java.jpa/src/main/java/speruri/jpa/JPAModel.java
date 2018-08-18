@@ -4,7 +4,7 @@ package speruri.jpa;
  * Hello world!
  *
  */
-public class App 
+public class JPAModel 
 {
     public static void main( String[] args )
     {

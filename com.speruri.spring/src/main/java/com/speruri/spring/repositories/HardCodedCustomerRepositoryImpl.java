@@ -3,8 +3,11 @@ package com.speruri.spring.repositories;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.speruri.spring.model.Customer;
 
+@Repository("customerRepository")
 public class HardCodedCustomerRepositoryImpl implements CustomerRepository {
 
 	/*
@@ -12,7 +15,6 @@ public class HardCodedCustomerRepositoryImpl implements CustomerRepository {
 	 * 
 	 * @see com.speruri.spring.repositories.CustomerRepository#findAll()
 	 */
-	@Override
 	public List<Customer> findAll() {
 		List<Customer> customers = new ArrayList<>();
 

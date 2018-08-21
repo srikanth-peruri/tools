@@ -2,25 +2,42 @@ package com.speruri.latest.algorithms.trees;
 
 public class TreeNode<E> {
 
-	TreeNode<E> left;
-	E data;
-	TreeNode<E> right;
+	private TreeNode<E> left;
+	private E data;
+	private TreeNode<E> right;
 
 	public TreeNode(E argData) {
 		this.data = argData;
 	}
-
+	
+	
 	public void insert(E argData) {
-		if ((Integer) argData < (Integer) left.data) {
-			left.insert(argData);
-		} else if ((Integer) argData > (Integer) right.data) {
-			right.insert(argData);
-		}
-		this.data = argData;
+		
+	}
+	
+
+	public TreeNode<E> getLeft() {
+		return left;
 	}
 
-	@Override
-	public String toString() {
-		return "" + this.data;
+	public void setLeft(TreeNode<E> left) {
+		this.left = left;
 	}
+
+	public E getData() {
+		return data;
+	}
+
+	public void setData(E data) {
+		this.data = data;
+	}
+
+	public TreeNode<E> getRight() {
+		return right;
+	}
+
+	public void setRight(TreeNode<E> right) {
+		this.right = right;
+	}
+
 }

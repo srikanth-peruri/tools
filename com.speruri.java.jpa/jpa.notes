@@ -1,0 +1,49 @@
+Persisting data is to 
+	retrieve
+	process
+	transform
+	analyze
+	
+We can store in many ways using
+	Database
+	Files
+	Disk Storage
+	NoSql - JSON
+		
+ORM (Object relationship mapping)
+	ORM bridges the gap between the OOPS with DBMS
+	It maps classes to tables in the database
+	It maps instances of the class to the rows of the table
+	
+JPA is the java specification for the ORM technologies 
+	so that switching between the ORM's would be easy if the others also follows the same specifications
+
+JPA is just a specification which provides the empty methods and interfaces to be implemented by the ORM implementations.. It can do nothing on its own.
+	Hibernate (JBOSS, RedHat), Eclipse link (by Oracle), Open JPA (by IBM), Data Nucleus(JPOX)
+	
+JPA with Spring
+	Spring uses either persistence.xml file or Annotations for entities(tables in DB), Columns, Id..etc
+	JPA also provides JPQL which is an alternative for SQL. We no need to write complex queries to fetch data
+	We will get the objects instead of rows like in SQL
+	EntityManager will provide the methods to interact with DB
+	JPQL will be converted to SQL and then queried by the ORM application
+
+JDBC is the low level api for accessing the relational database
+JDBC can perform
+	Connect to DB
+	Query the DB
+	Perform the CRUD operations
+	Closing the DB connection
+	
+With ORM, we no need to know the underlying SQL to query and manually read/assign the values to the POJO.
+IT can map the values to the object by ORM
+JPA has time-saving advantages over pure JDBC
+	
+	
+	
+	
+	
+
+	
+		
+	

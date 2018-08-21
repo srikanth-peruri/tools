@@ -1,4 +1,4 @@
-package com.speruri.design.patterns;
+package design.patterns;
 
 /**
  * Hello world!

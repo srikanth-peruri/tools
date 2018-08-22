@@ -1,0 +1,9 @@
+Doubly Linked Lists
+	As single linked list contain only reference to the next node, its difficult for us to traverse back. And we cannot move back in the list. 
+	So, to overcome this issue, we have anew linked list called doubly linked list which will have two references. 
+	One to the previous node and other to the next node
+	This might not be a memory friendly, but its good to travesal
+	
+
+
+

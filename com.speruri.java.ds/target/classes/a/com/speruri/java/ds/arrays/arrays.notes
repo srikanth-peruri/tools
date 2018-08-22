@@ -1,0 +1,53 @@
+Arrays
+	contiguous elements in the memory of same type
+	Its a data structure
+	A collection of contiguous elements identified by an index or key
+		Index starts from 0
+		Because of this indexes, accessing of random elements is easy like array[4]
+		Time complexity : O(1) based on index 
+	We can also have multidimensional arrays
+	Applications : Lookup tables/hashtables, heaps	
+	
+	
+Advantages:
+	We should use this when our applicatoins need to get the items based on index. Its very fast
+	O(1) based on index	
+	
+Disadvantages:
+	the size of the array should be mentioned ahead
+	If the array is filled up with elements, and want to increaase it, then the whole array has
+		to be copied in to the new array. Its O(n) complexity
+	It stores only similar type of elements
+
+Arrays Operations
+	add : adding values until the array is full - O(1)
+	insert[i,v] : insert the element v at position i and move all the other elements. - O(N)
+	
+	removeLast: removes the last items in the array. Its O(1) since we calculate the length and remove the last item 
+	remove(i) : remove the ith element and shift all the other elements. O(N)
+	
+	get(index) : get the value based on index and its O(1) since its based on index
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+				

@@ -1,0 +1,15 @@
+Trees are not linear DS like arays and linked lists. They are hierarchical DS used in many applications.
+
+Its a node which contains the left and right nodes along with the data.
+
+Tree Traversals
+	There are two types of traversal techniques.
+	1. Depth first search
+		we visit the child nodes until we reach the leaf node and then go to other parent. Three types of Depth first traversal techniques
+			a. Pre-Order traversal
+			b. In-Order traversal
+			c. Post-Order traversal
+		
+	2. Breadth first search (level order traversal)
+		Traverse node in layers
+		

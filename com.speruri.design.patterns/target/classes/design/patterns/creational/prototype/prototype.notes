@@ -1,0 +1,11 @@
+In prototype, JVM creates the clones for the pre determined objects. Say for example, if we have a class
+with some state when created, jvm uses this object's state and creates clones out of it whenever needed.
+
+we should be careful with the initial state since, bad state in the initial object will effect the other object creations.
+
+The class should implement the Cloneable interface for cloning itself
+
+There are two types of cloning
+	1. Shallow copy
+	2. Deep copy
+	

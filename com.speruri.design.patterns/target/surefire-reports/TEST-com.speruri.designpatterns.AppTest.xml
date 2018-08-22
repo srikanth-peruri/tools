@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="1" failures="0" name="com.speruri.designpatterns.AppTest" time="0.001" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="E:\tools\java\jdk1.8\jre\bin"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:/personal/my_practice/tools/com.speruri.design.patterns"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\personal\my_practice\tools\com.speruri.design.patterns"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="E:\tools\java\jdk1.8\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\IDCUSE~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="E:/tools/apache-maven-3.5.0-bin/apache-maven-3.5.0/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="E:\tools\java\jdk1.8\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\IDC user\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\IDC user\bin;E:\tools\java\jre1.8\bin\server;E:\tools\java\jre1.8\bin;E:\tools\java\jre1.8\lib\amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Symantec.cloud\PlatformAgent;C:\Program Files\Git\cmd;E:\tools\java\jdk1.8\bin;E:\tools\apache-maven-3.3.9\bin;C:\Program Files (x86)\Skype\Phone;E:\tools\java\jdk1.8\lib;C:\Users\IDC user\AppData\Local\Microsoft\WindowsApps;C:\Users\IDC user\AppData\Local\Programs\Fiddler;C:\adb;C:\Users\IDC user\Downloads\curl-7.56.0-win64-mingw\curl-7.56.0-win64-mingw\bin;E:\tools\gradle\gradle-4.2.1\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;E:\ANTlr\antlr-4.7.1-complete.jar;C:\WINDOWS\System32\OpenSSH;C:\Android;C:\Windows\System32;E:\ANTlr\antlr-4.7.1-complete.jar;C:\Users\IDC user\AppData\Local\Microsoft\WindowsApps;C:\Users\IDC user\AppData\Local\Programs\Fiddler;C:\Users\IDC user\AppData\Local\Microsoft\WindowsApps;E:\ANTlr\antlr-4.7.1-complete.jar;C:\Users\IDC user\AppData\Local\atom\bin;E:\tools\eclipse-jee-neon-2-win32-x86_64\eclipse;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+    <property name="maven.conf" value="E:/tools/apache-maven-3.5.0-bin/apache-maven-3.5.0/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="library.jansi.path" value="E:\tools\apache-maven-3.5.0-bin\apache-maven-3.5.0\lib\jansi-native\windows64"/>
+    <property name="user.home" value="C:\Users\IDC user"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="IDC user"/>
+    <property name="java.class.path" value="E:/tools/apache-maven-3.5.0-bin/apache-maven-3.5.0/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="E:\tools\java\jdk1.8\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="E:\tools\java\jdk1.8\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="E:\tools\java\jdk1.8\jre\lib\resources.jar;E:\tools\java\jdk1.8\jre\lib\rt.jar;E:\tools\java\jdk1.8\jre\lib\sunrsasign.jar;E:\tools\java\jdk1.8\jre\lib\jsse.jar;E:\tools\java\jdk1.8\jre\lib\jce.jar;E:\tools\java\jdk1.8\jre\lib\charsets.jar;E:\tools\java\jdk1.8\jre\lib\jfr.jar;E:\tools\java\jdk1.8\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp437"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="E:\tools\apache-maven-3.5.0-bin\apache-maven-3.5.0"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp437"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="com.speruri.designpatterns.AppTest" name="testApp" time="0.001"/>
+</testsuite>

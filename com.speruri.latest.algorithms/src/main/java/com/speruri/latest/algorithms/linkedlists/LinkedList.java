@@ -1,6 +1,5 @@
 package com.speruri.latest.algorithms.linkedlists;
 
-import com.sun.tools.javac.util.Assert;
 
 public class LinkedList<E> {
 

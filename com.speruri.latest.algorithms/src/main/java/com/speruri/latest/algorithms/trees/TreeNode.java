@@ -9,12 +9,10 @@ public class TreeNode<E> {
 	public TreeNode(E argData) {
 		this.data = argData;
 	}
-	
-	
+
 	public void insert(E argData) {
-		
+
 	}
-	
 
 	public TreeNode<E> getLeft() {
 		return left;
@@ -40,4 +38,8 @@ public class TreeNode<E> {
 		this.right = right;
 	}
 
+	@Override
+	public String toString() {
+		return this.data + " ";
+	}
 }

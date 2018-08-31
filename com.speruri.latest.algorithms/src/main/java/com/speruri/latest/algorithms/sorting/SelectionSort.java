@@ -1,5 +1,7 @@
 package com.speruri.latest.algorithms.sorting;
 
+import org.apache.commons.lang.ArrayUtils;
+
 public class SelectionSort {
 	// Tis iterates the array and put the minimum element at the first. And then
 	// take the next element and search the whole array for the least elemen
@@ -9,17 +11,15 @@ public class SelectionSort {
 		if (a == null || a.length == 0) {
 			return a;
 		}
-		for (int i = 0; i < a.length - 1; i++) {
+
+		for (int i = 0; i < a.length; i++) {
 			int minIndex = i;
 			for (int j = i + 1; j < a.length; j++) {
 				if (a[j] < a[minIndex]) {
 					minIndex = j;
 				}
 			}
-
-			int temp = a[minIndex];
-			a[minIndex] = a[i];
-			a[i] = temp;
+			CustomArrayUtils.swap(a, i, minIndex);
 		}
 
 		return a;

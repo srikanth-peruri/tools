@@ -1,5 +1,8 @@
 package com.speruri.latest.algorithms.arrays;
 
+import java.net.URL;
+import java.net.URLClassLoader;
+
 public class ArrayReversal {
 
 	// call the recursive functoin untill the start and end are equal
@@ -26,6 +29,20 @@ public class ArrayReversal {
 	}
 
 	public static void main(String[] args) {
+
+		URLClassLoader loader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+		do {
+			System.out.println(loader);
+
+			URL[] urLs = loader.getURLs();
+			for (URL url : urLs) {
+				System.out.println(url.getPath());
+			}
+
+		} while ((loader = (URLClassLoader) loader.getParent()) != null);
+
+		System.out.println("Bootstrap Classloader");
+
 		int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 		reverseArray(array, 0, array.length - 1);
 

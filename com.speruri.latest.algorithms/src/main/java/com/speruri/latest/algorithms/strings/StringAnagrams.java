@@ -29,11 +29,10 @@ public class StringAnagrams {
 				return false;
 			}
 		}
-
 		return true;
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Is anagram : " + areAnagrams("geeksforgeeks", "forgeeksgeeks"));
+		System.out.println("Is anagram : " + areAnagrams("GeeksforGeeks", "forgeeksgeeks"));
 	}
 }

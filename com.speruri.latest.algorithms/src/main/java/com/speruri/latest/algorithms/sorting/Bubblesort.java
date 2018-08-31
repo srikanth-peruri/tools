@@ -7,25 +7,23 @@ public class Bubblesort {
 			return a;
 		}
 
-		// Swaps the items by comparing the ith and ith + 1 in every pass
-		// for (int i = 0; i < a.length - 1; i++) {
-		// for (int j = i, k = j + 1; k < a.length; k++, j++) {
-		// if (a[j] < a[k]) {
-		// int temp = a[k];
-		// a[k] = a[j];
-		// a[j] = temp;
-		// }
-		// }
-		// }
-
-		// 64, 25, 12, 22, 11
+		// Since we need to swap the current element with next element, we just
+		// traverse till len-1
+		// Since we are bubbling the larger element to the end, we have to
+		// reduce the last index
+		// Since a[j] needs to be sent right, we have to check the for current
+		// greater than next
+		
 		for (int i = 0; i < a.length - 1; i++) {
+			boolean swapped = false;
 			for (int j = 0; j < a.length - i - 1; j++) {
-				if (a[j] < a[i]) {
-					int temp = a[i];
-					a[i] = a[j];
-					a[j] = temp;
+				if (a[j] > a[j + 1]) {
+					CustomArrayUtils.swap(a, j, j + 1);
+					swapped = true;
 				}
+			}
+			if(!swapped){
+				break;
 			}
 		}
 
@@ -33,9 +31,9 @@ public class Bubblesort {
 	}
 
 	public static void main(String[] args) {
-		int[] a = Bubblesort.performBubblesort(new int[] {64, 34, 25, 12, 22, 11, 90});
+		int[] a = Bubblesort.performBubblesort(new int[] { 64, 34, 25, 12, 22, 11, 90 });
 		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + " ");
+			System.out.print(a[i] + ", ");
 		}
 
 	}

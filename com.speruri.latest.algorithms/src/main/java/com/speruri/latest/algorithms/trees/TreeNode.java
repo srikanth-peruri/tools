@@ -10,8 +10,19 @@ public class TreeNode<E> {
 		this.data = argData;
 	}
 
-	public void insert(E argData) {
 
+	public void printBST(TreeNode<E> node) {
+		if (node == null) {
+			return;
+		}
+		System.out.print(node);
+		printBST(node.left);
+		printBST(node.right);
+	}
+
+	@Override
+	public String toString() {
+		return this.data + " ";
 	}
 
 	public TreeNode<E> getLeft() {
@@ -38,8 +49,4 @@ public class TreeNode<E> {
 		this.right = right;
 	}
 
-	@Override
-	public String toString() {
-		return this.data + " ";
-	}
 }

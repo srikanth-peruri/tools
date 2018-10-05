@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
+import java.util.Iterator;
+
 
 public class TreeADT {
 
@@ -253,6 +255,128 @@ public class TreeADT {
 		performInorderAndPopulateList(node.right, list);
 	}
 
+	public int findMinimum(NodeOfTree node) {
+		if (node == null) {
+			return -1;
+		}
+
+		int min = -1;
+		NodeOfTree current = node;
+		while (current.left != null) {
+			current = current.left;
+		}
+		min = current.data;
+		return min;
+	}
+
+	public static class NodeDetails {
+
+		private int min;
+		private int data;
+		private int max;
+
+		public NodeDetails(int min, int data, int max) {
+			this.min = min;
+			this.max = max;
+			this.data = data;
+		}
+
+	}
+
+	public boolean isLevelOrderArrayIsBST(int[] a) {
+		if (a == null || a.length == 0) {
+			return false;
+		}
+
+		int i = 0;
+		NodeDetails root = new NodeDetails(Integer.MIN_VALUE, a[i++], Integer.MAX_VALUE);
+		Queue<NodeDetails> q = new ArrayDeque<>();
+		q.offer(root);
+		int high = a.length;
+		int low = 0;
+		NodeDetails current;
+
+		while (i != high && !q.isEmpty()) {
+			current = q.poll();
+			int data = current.data;
+			int min = current.min;
+			int max = current.max;
+			int currentElement = a[i];
+
+			// Check whether array is not empty and check whether the left child
+			// can be current left node.
+			// The left node should be minimum
+			if (low < high && (currentElement < data && data > min)) {
+				// Then the next element is lesser and its true.
+				// Node create a nodedetails object and add it to queue
+				NodeDetails n = new NodeDetails(min, a[i++], data);
+				q.offer(n);
+			}
+			currentElement = a[i];
+			if (low < high && (currentElement > data && currentElement < max)) {
+				// Then there would be right child and we can add the node to
+				// queue
+				NodeDetails n = new NodeDetails(min, a[i++], max);
+				q.offer(n);
+			}
+
+		}
+
+		if (i == high) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public boolean isBFSTree(NodeOfTree node) {
+		if (node == null) {
+			return false;
+		}
+
+		Queue<NodeOfTree> queue = new ArrayDeque<>();
+		queue.add(node);
+		NodeOfTree current;
+		List<Integer> list = new ArrayList();
+
+		inOrderAndreturnList(node, list);
+		
+
+		Iterator iterator = list.iterator();
+		System.out.println("After sort");
+		while(iterator.hasNext()){
+			System.out.print(iterator.next());
+		}
+		
+		for (int i = 0; i < list.size() - 1; i++) {
+			if (list.get(i) > list.get(i + 1)) {
+				return false;
+			}
+		}
+		return true;
+
+	}
+
+	public void inOrderAndreturnList(NodeOfTree node, List<Integer> list) {
+		if (node == null) {
+			return;
+		}
+		inOrderAndreturnList(node.left, list);
+		list.add(node.data);
+		inOrderAndreturnList(node.right, list);
+	}
+
+	public int findKthSmallestElement(NodeOfTree node, int index) {
+		if (node == null || index < 0) {
+			return -1;
+		}
+		int min = -1;
+
+		List<Integer> list = new ArrayList<Integer>();
+		inOrderAndreturnList(node, list);
+		return list.get(index);
+	}
+
 	public static void main(String[] args) {
 		TreeADT tree = new TreeADT();
 		tree.insert(50);
@@ -264,20 +388,38 @@ public class TreeADT {
 		tree.insert(80);
 
 		// print inorder traversal of the BST
-		tree.inOrderTraversal(null);
+		tree.inOrderTraversal(tree.root);
+		System.out.println("\nMinimum element is ");
+		System.out.println(tree.findMinimum(tree.root));
 		System.out.println("Searching");
 		System.out.println(tree.searchData(tree.root, -50));
-		System.out.println("Level order travesal");
-		tree.levelOrderTraversal(tree.root);
-		System.out.println("Converting the Binary tree to BST");
-		NodeOfTree n = new NodeOfTree(10);
-		n.left = new NodeOfTree(30);
-		n.right = new NodeOfTree(15);
-		n.left.left = new NodeOfTree(20);
-		n.right.right = new NodeOfTree(5);
-		System.out.println("Before converting ");
-		tree.inOrderTraversal(n);
-		tree.convertBinaryTreeToBST(n);
+		// System.out.println("Level order travesal");
+		// tree.levelOrderTraversal(tree.root);
+		// System.out.println("Converting the Binary tree to BST");
+		// NodeOfTree n = new NodeOfTree(10);
+		// n.left = new NodeOfTree(30);
+		// n.right = new NodeOfTree(15);
+		// n.left.left = new NodeOfTree(20);
+		// n.right.right = new NodeOfTree(5);
+		// System.out.println("Before converting ");
+		// tree.inOrderTraversal(n);
+		// tree.convertBinaryTreeToBST(n);
+
+		int arr[] = { 7, 4, 12, 3, 6, 8, 1, 5, 10 };
+		System.out.println("Is Level Ordered Array is BST");
+		System.out.println(tree.isLevelOrderArrayIsBST(arr));
+
+		TreeADT tree1 = new TreeADT();
+		tree1.root = new NodeOfTree(4);
+		tree1.root.left = new NodeOfTree(2);
+		tree1.root.right = new NodeOfTree(5);
+		tree1.root.left.left = new NodeOfTree(1);
+		tree1.root.left.right = new NodeOfTree(3);
+		System.out.println("Is BST");
+		System.out.println(tree.isBFSTree(tree1.root));
+		System.out.println(tree.findKthSmallestElement(tree1.root,3));
+		
+
 	}
 
 }

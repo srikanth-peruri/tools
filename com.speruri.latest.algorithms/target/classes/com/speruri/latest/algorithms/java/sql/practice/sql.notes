@@ -1,0 +1,31 @@
+SQL (Structured Query Language)
+	Is is special purpose programming language
+	C, C++ , java are genral purpose languages
+	SQL is to query the DBMS
+	To manipulate the sets of data
+	Typically used to query the DBMS
+	has ANSI and ISO standards. Every DBMS vendor should support these standards
+
+Database : Is a container which organises the data in a logical way
+		   Efficiently used to store and retrieve the data 
+			Makes one source of truth used to store and retrieve data
+		
+Relational Model
+	A way to descibe the data and relationships between them
+	
+Table
+	We store data inside a table
+	Its like a spread sheet
+	It has Rows and columns
+	Each column has restrictions of the data thats been inserted into it
+	It has size, type of data that goes to table
+	Every row might have all the columns or some of the columns populated
+	We can query the database to fetch the data
+	
+
+		   
+			
+	
+
+
+

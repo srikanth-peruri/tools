@@ -1,0 +1,9 @@
+Builder pattern deals with the creation of the objects
+It delegates the creation of the objects to other class and hides the complexity of the creation
+
+When Builder pattern is used?
+	When application needs a complex objects of different types in multiple steps and expect a final object as outcome
+	
+Real world application
+		
+	Director is the 

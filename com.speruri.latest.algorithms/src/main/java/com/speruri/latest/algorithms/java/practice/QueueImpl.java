@@ -44,9 +44,9 @@ public class QueueImpl {
 
 	public static void main(String[] args) {
 		QueueImpl q = new QueueImpl();
-		Product window = new Product("Window", 10);
-		Product door = new Product("Wooden Door", 35);
-		Product floorPanel = new Product("Floor Panel", 25);
+		Product window = new Product("1", "Window", 10);
+		Product door = new Product("2", "Wooden Door", 35);
+		Product floorPanel = new Product("3", "Floor Panel", 25);
 
 		q.addProduct(door);
 		q.addProduct(floorPanel);
